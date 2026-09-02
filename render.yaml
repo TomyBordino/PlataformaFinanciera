@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: finterm-backend
+    runtime: docker
+    plan: free
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /api/docs
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: FINNHUB_KEY
+        sync: false
+      - key: ALPHAVANTAGE_KEY
+        sync: false
+      - key: SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: DB_PATH
+        value: finterm.db
