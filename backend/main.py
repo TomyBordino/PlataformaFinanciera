@@ -174,6 +174,28 @@ async def macro(fn: str):
     return await cached(f"macro:{fn}",
                         f"https://www.alphavantage.co/query?function={fn}{extra}&apikey={ALPHA}", 86400)
 
+# ---------------------------- autenticación ----------------------------
+# Se define antes de los endpoints que dependen de admin_only (ej. análisis IA).
+
+def auth(authorization: str = Header(None)) -> int:
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(401, "falta el token")
+    with db() as con:
+        row = con.execute("SELECT user_id FROM tokens WHERE token=?", (authorization[7:],)).fetchone()
+    if not row:
+        raise HTTPException(401, "token inválido")
+    return row["user_id"]
+
+def user_role(user_id: int) -> str:
+    with db() as con:
+        row = con.execute("SELECT role FROM users WHERE id=?", (user_id,)).fetchone()
+    return row["role"] if row else "user"
+
+def admin_only(user_id: int = Depends(auth)) -> int:
+    if user_role(user_id) != "admin":
+        raise HTTPException(403, "solo el administrador puede hacer esto")
+    return user_id
+
 # ---------------------------- análisis IA compartidos ----------------------------
 # El frontend genera el análisis (modelo de IA) y lo publica acá: queda disponible
 # para TODOS los usuarios hasta que alguien lo regenere.
@@ -207,25 +229,6 @@ def hash_pw(pw: str, salt: str) -> str:
 class Credentials(BaseModel):
     email: str
     password: str
-
-def auth(authorization: str = Header(None)) -> int:
-    if not authorization or not authorization.startswith("Bearer "):
-        raise HTTPException(401, "falta el token")
-    with db() as con:
-        row = con.execute("SELECT user_id FROM tokens WHERE token=?", (authorization[7:],)).fetchone()
-    if not row:
-        raise HTTPException(401, "token inválido")
-    return row["user_id"]
-
-def user_role(user_id: int) -> str:
-    with db() as con:
-        row = con.execute("SELECT role FROM users WHERE id=?", (user_id,)).fetchone()
-    return row["role"] if row else "user"
-
-def admin_only(user_id: int = Depends(auth)) -> int:
-    if user_role(user_id) != "admin":
-        raise HTTPException(403, "solo el administrador puede hacer esto")
-    return user_id
 
 @app.post("/api/register")
 def register(c: Credentials):
