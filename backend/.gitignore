@@ -1,0 +1,5 @@
+# claves y base local — nunca subir
+.env
+*.db
+__pycache__/
+*.pyc

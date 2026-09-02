@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#e7e6e2;font-family:system-ui,sans-serif}
+.dv-turn{padding:44px 48px 36px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 22px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:11px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:24px 0 0;font:12px/1.6 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+.dv-next a{color:rgba(0,0,0,.5)}
+</style>
+</helmet>
+<section class="dv-turn" id="t7">
+<div class="dv-thd"><a class="dv-tid" href="#t7">7</a><span class="dv-tname">Mezcla <a class="dv-oid" href="#6a">6a</a> + <a class="dv-oid" href="#6c">6c</a> · espejo divergente con barras de magnitud</span></div>
+<div class="dv-opts">
+  <div class="dv-opt" id="7a">
+    <div class="dv-olabel"><a class="dv-oid" href="#7a">7a</a>Espejo con barras · eje central, bajas crecen a la izquierda y subas a la derecha; barra proporcional al % en cada fila, enfrentando el puesto 1 con el puesto 1</div>
+    <div class="dv-card" style="width:640px;background:#111214;border:1px solid #26272b;border-radius:14px;padding:18px 22px;font-family:'Plus Jakarta Sans',sans-serif">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px">
+        <span style="font-size:12px;color:#8f8a7c;font-weight:600">Mayores movimientos del día</span>
+        <span style="font-size:10px;color:#55524a;font-family:'JetBrains Mono',monospace">S&P 500 · EN VIVO</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+        <span style="font-size:10px;font-weight:700;color:#ff7a8a;letter-spacing:1px">▼ BAJAS</span>
+        <span style="font-size:10px;font-weight:700;color:#3ddc97;letter-spacing:1px">SUBAS ▲</span>
+      </div>
+      <!-- fila: [pct][ticker][barra←] | eje | [→barra][ticker][pct] -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:0">
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-right:1px solid #26272b;padding-right:10px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#ff7a8a;width:50px">−3,67%</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px">TSLA</span>
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(255,122,138,.10);display:flex;justify-content:flex-end"><div style="width:80%;height:100%;border-radius:3px;background:rgba(255,122,138,.45)"></div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;padding-left:10px">
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(61,220,151,.10)"><div style="width:92%;height:100%;border-radius:3px;background:rgba(61,220,151,.45)"></div></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px;text-align:right">NVDA</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#3ddc97;width:50px;text-align:right">+4,21%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-right:1px solid #26272b;padding-right:10px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#ff7a8a;width:50px">−2,15%</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px">BA</span>
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(255,122,138,.10);display:flex;justify-content:flex-end"><div style="width:47%;height:100%;border-radius:3px;background:rgba(255,122,138,.45)"></div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;padding-left:10px">
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(61,220,151,.10)"><div style="width:68%;height:100%;border-radius:3px;background:rgba(61,220,151,.45)"></div></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px;text-align:right">AVGO</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#3ddc97;width:50px;text-align:right">+3,08%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-right:1px solid #26272b;padding-right:10px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#ff7a8a;width:50px">−1,89%</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px">NKE</span>
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(255,122,138,.10);display:flex;justify-content:flex-end"><div style="width:41%;height:100%;border-radius:3px;background:rgba(255,122,138,.45)"></div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;padding-left:10px">
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(61,220,151,.10)"><div style="width:54%;height:100%;border-radius:3px;background:rgba(61,220,151,.45)"></div></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px;text-align:right">LLY</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#3ddc97;width:50px;text-align:right">+2,44%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-right:1px solid #26272b;padding-right:10px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#ff7a8a;width:50px">−1,38%</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px">PFE</span>
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(255,122,138,.10);display:flex;justify-content:flex-end"><div style="width:30%;height:100%;border-radius:3px;background:rgba(255,122,138,.45)"></div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;padding-left:10px">
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(61,220,151,.10)"><div style="width:41%;height:100%;border-radius:3px;background:rgba(61,220,151,.45)"></div></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px;text-align:right">META</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#3ddc97;width:50px;text-align:right">+1,87%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-right:1px solid #26272b;padding-right:10px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#ff7a8a;width:50px">−1,12%</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px">KO</span>
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(255,122,138,.10);display:flex;justify-content:flex-end"><div style="width:24%;height:100%;border-radius:3px;background:rgba(255,122,138,.45)"></div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;padding-left:10px">
+          <div style="flex:1;height:14px;border-radius:3px;background:rgba(61,220,151,.10)"><div style="width:36%;height:100%;border-radius:3px;background:rgba(61,220,151,.45)"></div></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:44px;text-align:right">JPM</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#3ddc97;width:50px;text-align:right">+1,64%</span>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:10px;color:#55524a;font-family:'JetBrains Mono',monospace">BARRAS PROPORCIONALES AL % · CLIC EN CUALQUIER FILA ABRE EL DETALLE</div>
+    </div>
+  </div>
+</div>
+<div class="dv-next">Si te gusta <a href="#7a">7a</a>, la aplico al Dashboard en ambos temas.</div>
+</section>
+
+<section class="dv-turn" id="t6">
+<div class="dv-thd"><a class="dv-tid" href="#t6">6</a><span class="dv-tname">"Mayores movimientos del día" · 4 formas de mostrarlos (en el tema oscuro actual)</span></div>
+<div class="dv-opts">
+
+  <!-- 6a · Barras de magnitud -->
+  <div class="dv-opt" id="6a">
+    <div class="dv-olabel"><a class="dv-oid" href="#6a">6a</a>Barras de magnitud · dos columnas, cada fila con barra proporcional al % — se lee la escala de un vistazo</div>
+    <div class="dv-card" style="width:560px;background:#111214;border:1px solid #26272b;border-radius:14px;padding:18px 20px;font-family:'Plus Jakarta Sans',sans-serif">
+      <div style="font-size:12px;color:#8f8a7c;margin-bottom:14px;font-weight:600">Mayores movimientos del día</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#3ddc97;letter-spacing:1px;margin-bottom:10px">▲ SUBAS</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:46px">NVDA</span><div style="flex:1;height:14px;border-radius:3px;background:rgba(61,220,151,.12)"><div style="width:92%;height:100%;border-radius:3px;background:rgba(61,220,151,.45)"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#3ddc97;width:52px;text-align:right">+4,21%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:46px">AVGO</span><div style="flex:1;height:14px;border-radius:3px;background:rgba(61,220,151,.12)"><div style="width:68%;height:100%;border-radius:3px;background:rgba(61,220,151,.45)"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#3ddc97;width:52px;text-align:right">+3,08%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:46px">LLY</span><div style="flex:1;height:14px;border-radius:3px;background:rgba(61,220,151,.12)"><div style="width:54%;height:100%;border-radius:3px;background:rgba(61,220,151,.45)"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#3ddc97;width:52px;text-align:right">+2,44%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:46px">META</span><div style="flex:1;height:14px;border-radius:3px;background:rgba(61,220,151,.12)"><div style="width:41%;height:100%;border-radius:3px;background:rgba(61,220,151,.45)"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#3ddc97;width:52px;text-align:right">+1,87%</span></div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#ff7a8a;letter-spacing:1px;margin-bottom:10px">▼ BAJAS</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:46px">TSLA</span><div style="flex:1;height:14px;border-radius:3px;background:rgba(255,122,138,.12)"><div style="width:80%;height:100%;border-radius:3px;background:rgba(255,122,138,.45)"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#ff7a8a;width:52px;text-align:right">−3,67%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:46px">BA</span><div style="flex:1;height:14px;border-radius:3px;background:rgba(255,122,138,.12)"><div style="width:47%;height:100%;border-radius:3px;background:rgba(255,122,138,.45)"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#ff7a8a;width:52px;text-align:right">−2,15%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:46px">NKE</span><div style="flex:1;height:14px;border-radius:3px;background:rgba(255,122,138,.12)"><div style="width:41%;height:100%;border-radius:3px;background:rgba(255,122,138,.45)"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#ff7a8a;width:52px;text-align:right">−1,89%</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ececec;width:46px">PFE</span><div style="flex:1;height:14px;border-radius:3px;background:rgba(255,122,138,.12)"><div style="width:30%;height:100%;border-radius:3px;background:rgba(255,122,138,.45)"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#ff7a8a;width:52px;text-align:right">−1,38%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6b · Mosaico heatmap -->
+  <div class="dv-opt" id="6b">
+    <div class="dv-olabel"><a class="dv-oid" href="#6b">6b</a>Mosaico heatmap · celdas más grandes = movimiento más fuerte; intensidad de color según % (estilo Finviz)</div>
+    <div class="dv-card" style="width:560px;background:#111214;border:1px solid #26272b;border-radius:14px;padding:18px 20px;font-family:'Plus Jakarta Sans',sans-serif">
+      <div style="font-size:12px;color:#8f8a7c;margin-bottom:14px;font-weight:600">Mayores movimientos del día</div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:52px;gap:6px">
+        <div style="grid-column:span 3;grid-row:span 2;background:rgba(61,220,151,.34);border:1px solid rgba(61,220,151,.5);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#eafff5">NVDA</span><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#3ddc97">+4,21%</span></div>
+        <div style="grid-column:span 3;grid-row:span 2;background:rgba(255,122,138,.30);border:1px solid rgba(255,122,138,.48);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;color:#ffeef0">TSLA</span><span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#ff7a8a">−3,67%</span></div>
+        <div style="grid-column:span 2;background:rgba(61,220,151,.24);border:1px solid rgba(61,220,151,.4);border-radius:8px;padding:7px 10px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#eafff5">AVGO</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#3ddc97">+3,08%</span></div>
+        <div style="grid-column:span 2;background:rgba(61,220,151,.18);border:1px solid rgba(61,220,151,.32);border-radius:8px;padding:7px 10px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#eafff5">LLY</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#3ddc97">+2,44%</span></div>
+        <div style="grid-column:span 2;background:rgba(255,122,138,.20);border:1px solid rgba(255,122,138,.36);border-radius:8px;padding:7px 10px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ffeef0">BA</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#ff7a8a">−2,15%</span></div>
+        <div style="grid-column:span 2;background:rgba(61,220,151,.14);border:1px solid rgba(61,220,151,.26);border-radius:8px;padding:7px 10px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#eafff5">META</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#3ddc97">+1,87%</span></div>
+        <div style="grid-column:span 2;background:rgba(255,122,138,.16);border:1px solid rgba(255,122,138,.3);border-radius:8px;padding:7px 10px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ffeef0">NKE</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#ff7a8a">−1,89%</span></div>
+        <div style="grid-column:span 2;background:rgba(255,122,138,.12);border:1px solid rgba(255,122,138,.24);border-radius:8px;padding:7px 10px;display:flex;flex-direction:column;justify-content:space-between"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#ffeef0">PFE</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#ff7a8a">−1,38%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6c · Espejo divergente -->
+  <div class="dv-opt" id="6c">
+    <div class="dv-olabel"><a class="dv-oid" href="#6c">6c</a>Espejo divergente · un solo ranking con eje central: bajas crecen a la izquierda, subas a la derecha</div>
+    <div class="dv-card" style="width:560px;background:#111214;border:1px solid #26272b;border-radius:14px;padding:18px 20px;font-family:'Plus Jakarta Sans',sans-serif">
+      <div style="display:flex;justify-content:space-between;margin-bottom:14px"><span style="font-size:12px;color:#8f8a7c;font-weight:600">Mayores movimientos del día</span><span style="font-size:10px;color:#55524a;font-family:'JetBrains Mono',monospace">◀ BAJAS · SUBAS ▶</span></div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="display:grid;grid-template-columns:52px 1fr 1fr 52px;align-items:center;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#55524a"></span><div></div><div style="display:flex;align-items:center;gap:8px"><div style="width:92%;height:16px;border-radius:0 4px 4px 0;background:linear-gradient(90deg,rgba(61,220,151,.5),rgba(61,220,151,.2));border-left:2px solid #3ddc97"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#3ddc97">+4,21</span></div>
+        <div style="display:grid;grid-template-columns:52px 1fr 1fr 52px;align-items:center;gap:8px;margin-top:-4px"><span></span><div></div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#ececec;font-weight:600;padding-left:4px">NVDA · NVIDIA</div><span></span></div>
+        <div style="display:grid;grid-template-columns:52px 1fr 1fr 52px;align-items:center;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#ff7a8a">−3,67</span><div style="display:flex;justify-content:flex-end"><div style="width:80%;height:16px;border-radius:4px 0 0 4px;background:linear-gradient(270deg,rgba(255,122,138,.5),rgba(255,122,138,.2));border-right:2px solid #ff7a8a"></div></div><div></div><span></span></div>
+        <div style="display:grid;grid-template-columns:52px 1fr 1fr 52px;align-items:center;gap:8px;margin-top:-4px"><span></span><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#ececec;font-weight:600;text-align:right;padding-right:4px">Tesla · TSLA</div><div></div><span></span></div>
+        <div style="display:grid;grid-template-columns:52px 1fr 1fr 52px;align-items:center;gap:8px"><span></span><div></div><div><div style="width:68%;height:16px;border-radius:0 4px 4px 0;background:linear-gradient(90deg,rgba(61,220,151,.5),rgba(61,220,151,.2));border-left:2px solid #3ddc97"></div></div><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#3ddc97">+3,08</span></div>
+        <div style="display:grid;grid-template-columns:52px 1fr 1fr 52px;align-items:center;gap:8px;margin-top:-4px"><span></span><div></div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#ececec;font-weight:600;padding-left:4px">AVGO · Broadcom</div><span></span></div>
+        <div style="display:grid;grid-template-columns:52px 1fr 1fr 52px;align-items:center;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#ff7a8a">−2,15</span><div style="display:flex;justify-content:flex-end"><div style="width:47%;height:16px;border-radius:4px 0 0 4px;background:linear-gradient(270deg,rgba(255,122,138,.5),rgba(255,122,138,.2));border-right:2px solid #ff7a8a"></div></div><div></div><span></span></div>
+        <div style="display:grid;grid-template-columns:52px 1fr 1fr 52px;align-items:center;gap:8px;margin-top:-4px"><span></span><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#ececec;font-weight:600;text-align:right;padding-right:4px">Boeing · BA</div><div></div><span></span></div>
+      </div>
+      <div style="height:1px;background:#26272b;margin-top:12px"></div>
+      <div style="text-align:center;font-size:9.5px;color:#55524a;margin-top:8px;font-family:'JetBrains Mono',monospace">EJE CENTRAL = 0%</div>
+    </div>
+  </div>
+
+  <!-- 6d · Tarjetas con sparkline (actual, refinado) -->
+  <div class="dv-opt" id="6d">
+    <div class="dv-olabel"><a class="dv-oid" href="#6d">6d</a>Tarjetas + sparkline · lo actual pero refinado: menos celdas (top 4 por lado), mini-gráfico y precio más protagonistas</div>
+    <div class="dv-card" style="width:560px;background:#111214;border:1px solid #26272b;border-radius:14px;padding:18px 20px;font-family:'Plus Jakarta Sans',sans-serif">
+      <div style="font-size:12px;color:#8f8a7c;margin-bottom:14px;font-weight:600">Mayores movimientos del día</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="background:rgba(61,220,151,.07);border:1px solid rgba(61,220,151,.25);border-radius:10px;padding:12px 14px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;color:#ececec">NVDA</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#3ddc97">+4,21%</span></div>
+          <div style="font-size:10.5px;color:#8f8a7c;margin-top:2px">NVIDIA · US$ 1.284,50</div>
+          <svg viewBox="0 0 200 30" preserveAspectRatio="none" style="width:100%;height:30px;margin-top:8px"><path d="M0 26 L28 22 L57 24 L85 16 L114 19 L142 10 L171 13 L200 4" fill="none" stroke="#3ddc97" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="background:rgba(255,122,138,.07);border:1px solid rgba(255,122,138,.25);border-radius:10px;padding:12px 14px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;color:#ececec">TSLA</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#ff7a8a">−3,67%</span></div>
+          <div style="font-size:10.5px;color:#8f8a7c;margin-top:2px">Tesla · US$ 421,80</div>
+          <svg viewBox="0 0 200 30" preserveAspectRatio="none" style="width:100%;height:30px;margin-top:8px"><path d="M0 5 L28 9 L57 7 L85 14 L114 12 L142 20 L171 18 L200 26" fill="none" stroke="#ff7a8a" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="background:rgba(61,220,151,.07);border:1px solid rgba(61,220,151,.25);border-radius:10px;padding:12px 14px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;color:#ececec">AVGO</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#3ddc97">+3,08%</span></div>
+          <div style="font-size:10.5px;color:#8f8a7c;margin-top:2px">Broadcom · US$ 2.140,00</div>
+          <svg viewBox="0 0 200 30" preserveAspectRatio="none" style="width:100%;height:30px;margin-top:8px"><path d="M0 24 L28 26 L57 20 L85 22 L114 15 L142 17 L171 9 L200 6" fill="none" stroke="#3ddc97" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="background:rgba(255,122,138,.07);border:1px solid rgba(255,122,138,.25);border-radius:10px;padding:12px 14px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;color:#ececec">BA</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#ff7a8a">−2,15%</span></div>
+          <div style="font-size:10.5px;color:#8f8a7c;margin-top:2px">Boeing · US$ 218,35</div>
+          <svg viewBox="0 0 200 30" preserveAspectRatio="none" style="width:100%;height:30px;margin-top:8px"><path d="M0 8 L28 6 L57 12 L85 10 L114 17 L142 15 L171 22 L200 25" fill="none" stroke="#ff7a8a" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="dv-next">Decime cuál aplicamos al Dashboard: <a href="#6a">6a</a> barras · <a href="#6b">6b</a> mosaico · <a href="#6c">6c</a> espejo · <a href="#6d">6d</a> tarjetas refinadas (o una mezcla, p. ej. "6a arriba + 6b abajo").</div>
+</section>
+
+<section class="dv-turn" id="t5">
+<div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">Modo claro v2 · 3 opciones que armonizan con el dark 4a (que queda como está)</span></div>
+<div class="dv-opts">
+
+  <!-- 5a · MARFIL CÁLIDO -->
+  <div class="dv-opt" id="5a">
+    <div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a>Marfil cálido · fondo hueso tipo papel, bordes cálidos, mismo naranja — el gemelo natural del dark</div>
+    <div class="dv-card" style="width:880px;background:#faf9f6;border:1px solid #e6e3da;border-radius:12px;box-shadow:0 8px 28px rgba(60,50,30,.08);font-family:'IBM Plex Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:180px;border-right:1px solid #e9e6dd;padding:20px 16px;background:#faf9f6">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#1c1a15">Finterm<span style="color:#c2410c">.</span></div>
+        <div style="font-size:8.5px;color:#a8a294;letter-spacing:1.6px;margin:4px 0 22px;font-family:'JetBrains Mono',monospace">ANÁLISIS FINANCIERO</div>
+        <div style="font-size:13px;font-weight:600;color:#1c1a15;padding:9px 10px;background:#f1efe7;border-left:2px solid #1c1a15">Dashboard</div>
+        <div style="font-size:13px;color:#8f8a7c;padding:9px 10px">Detalle</div>
+        <div style="font-size:13px;color:#8f8a7c;padding:9px 10px">Screener</div>
+        <div style="font-size:13px;color:#8f8a7c;padding:9px 10px">Análisis IA</div>
+        <div style="font-size:13px;color:#8f8a7c;padding:9px 10px">Mi cartera</div>
+      </div>
+      <div style="flex:1;padding:20px 24px">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;margin-bottom:12px">
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:15px 17px">
+            <div style="font-size:10px;color:#a8a294;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">S&P 500 · SPY</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:7px"><span style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#1c1a15">6.284,52</span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#0d7a4d">▲ +0,76%</span></div>
+            <svg viewBox="0 0 300 34" preserveAspectRatio="none" style="width:100%;height:34px;margin-top:7px"><path d="M0 28 L25 25 L50 27 L75 21 L100 24 L125 17 L150 20 L175 13 L200 16 L225 10 L250 13 L275 6 L300 4" fill="none" stroke="#1c1a15" stroke-width="1.6"/></svg>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:15px 17px">
+            <div style="font-size:10px;color:#a8a294;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">AMPLITUD</div>
+            <div style="margin-top:7px;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#1c1a15">312<span style="font-size:12px;color:#0d7a4d">▲</span> 191<span style="font-size:12px;color:#b3362e">▼</span></div>
+            <div style="height:3px;background:#eeebe2;margin-top:14px"><div style="width:62%;height:100%;background:#1c1a15"></div></div>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:15px 17px">
+            <div style="font-size:10px;color:#a8a294;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">SENTIMIENTO IA</div>
+            <div style="margin-top:7px;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#1c1a15">62 <span style="font-size:11px;color:#c2410c;font-family:'JetBrains Mono',monospace">OPTIMISTA</span></div>
+            <div style="height:3px;background:#eeebe2;margin-top:14px"><div style="width:62%;height:100%;background:#c2410c"></div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:13px 16px">
+            <div style="font-size:9.5px;font-weight:600;color:#0d7a4d;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:7px">SUBAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f2f0e9"><span style="font-size:12.5px;color:#1c1a15"><b>NVDA</b> <span style="color:#a8a294;font-size:11px">NVIDIA</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#0d7a4d">+4,21%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:12.5px;color:#1c1a15"><b>AVGO</b> <span style="color:#a8a294;font-size:11px">Broadcom</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#0d7a4d">+3,08%</span></div>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:13px 16px">
+            <div style="font-size:9.5px;font-weight:600;color:#b3362e;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:7px">BAJAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f2f0e9"><span style="font-size:12.5px;color:#1c1a15"><b>TSLA</b> <span style="color:#a8a294;font-size:11px">Tesla</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#b3362e">−3,67%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:12.5px;color:#1c1a15"><b>BA</b> <span style="color:#a8a294;font-size:11px">Boeing</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#b3362e">−2,15%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5b · GRIS PERLA -->
+  <div class="dv-opt" id="5b">
+    <div class="dv-olabel"><a class="dv-oid" href="#5b">5b</a>Gris perla · fondo gris neutro frío, tarjetas blancas con sombra muy leve — más "app", menos papel</div>
+    <div class="dv-card" style="width:880px;background:#f1f2f4;border:1px solid #e2e4e8;border-radius:12px;box-shadow:0 8px 28px rgba(30,35,45,.08);font-family:'IBM Plex Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:180px;border-right:1px solid #e5e7ea;padding:20px 16px;background:#ffffff">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#16181d">Finterm<span style="color:#c2410c">.</span></div>
+        <div style="font-size:8.5px;color:#9aa0ab;letter-spacing:1.6px;margin:4px 0 22px;font-family:'JetBrains Mono',monospace">ANÁLISIS FINANCIERO</div>
+        <div style="font-size:13px;font-weight:600;color:#16181d;padding:9px 10px;background:#f1f2f4;border-left:2px solid #16181d">Dashboard</div>
+        <div style="font-size:13px;color:#878d99;padding:9px 10px">Detalle</div>
+        <div style="font-size:13px;color:#878d99;padding:9px 10px">Screener</div>
+        <div style="font-size:13px;color:#878d99;padding:9px 10px">Análisis IA</div>
+        <div style="font-size:13px;color:#878d99;padding:9px 10px">Mi cartera</div>
+      </div>
+      <div style="flex:1;padding:20px 24px">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;margin-bottom:12px">
+          <div style="background:#ffffff;border:1px solid #e8eaed;border-radius:10px;padding:15px 17px;box-shadow:0 1px 3px rgba(22,24,29,.06)">
+            <div style="font-size:10px;color:#9aa0ab;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">S&P 500 · SPY</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:7px"><span style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#16181d">6.284,52</span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#0e8050">▲ +0,76%</span></div>
+            <svg viewBox="0 0 300 34" preserveAspectRatio="none" style="width:100%;height:34px;margin-top:7px"><path d="M0 28 L25 25 L50 27 L75 21 L100 24 L125 17 L150 20 L175 13 L200 16 L225 10 L250 13 L275 6 L300 4" fill="none" stroke="#16181d" stroke-width="1.6"/></svg>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e8eaed;border-radius:10px;padding:15px 17px;box-shadow:0 1px 3px rgba(22,24,29,.06)">
+            <div style="font-size:10px;color:#9aa0ab;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">AMPLITUD</div>
+            <div style="margin-top:7px;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#16181d">312<span style="font-size:12px;color:#0e8050">▲</span> 191<span style="font-size:12px;color:#c03a32">▼</span></div>
+            <div style="height:3px;background:#eceef1;margin-top:14px"><div style="width:62%;height:100%;background:#16181d"></div></div>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e8eaed;border-radius:10px;padding:15px 17px;box-shadow:0 1px 3px rgba(22,24,29,.06)">
+            <div style="font-size:10px;color:#9aa0ab;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">SENTIMIENTO IA</div>
+            <div style="margin-top:7px;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#16181d">62 <span style="font-size:11px;color:#c2410c;font-family:'JetBrains Mono',monospace">OPTIMISTA</span></div>
+            <div style="height:3px;background:#eceef1;margin-top:14px"><div style="width:62%;height:100%;background:#c2410c"></div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="background:#ffffff;border:1px solid #e8eaed;border-radius:10px;padding:13px 16px;box-shadow:0 1px 3px rgba(22,24,29,.06)">
+            <div style="font-size:9.5px;font-weight:600;color:#0e8050;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:7px">SUBAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f1f4"><span style="font-size:12.5px;color:#16181d"><b>NVDA</b> <span style="color:#9aa0ab;font-size:11px">NVIDIA</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#0e8050">+4,21%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:12.5px;color:#16181d"><b>AVGO</b> <span style="color:#9aa0ab;font-size:11px">Broadcom</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#0e8050">+3,08%</span></div>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e8eaed;border-radius:10px;padding:13px 16px;box-shadow:0 1px 3px rgba(22,24,29,.06)">
+            <div style="font-size:9.5px;font-weight:600;color:#c03a32;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:7px">BAJAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f1f4"><span style="font-size:12.5px;color:#16181d"><b>TSLA</b> <span style="color:#9aa0ab;font-size:11px">Tesla</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#c03a32">−3,67%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:12.5px;color:#16181d"><b>BA</b> <span style="color:#9aa0ab;font-size:11px">Boeing</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#c03a32">−2,15%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5c · SIDEBAR GRAFITO + CONTENIDO CLARO -->
+  <div class="dv-opt" id="5c">
+    <div class="dv-olabel"><a class="dv-oid" href="#5c">5c</a>Híbrido · sidebar grafito oscuro (igual al dark que te gustó) + contenido claro marfil — continuidad total entre temas</div>
+    <div class="dv-card" style="width:880px;background:#f9f8f5;border:1px solid #e6e3da;border-radius:12px;box-shadow:0 8px 28px rgba(30,28,20,.10);font-family:'IBM Plex Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:180px;padding:20px 16px;background:#111110;border-right:1px solid #282825">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#f4f4ef">Finterm<span style="color:#e0592a">.</span></div>
+        <div style="font-size:8.5px;color:#78786d;letter-spacing:1.6px;margin:4px 0 22px;font-family:'JetBrains Mono',monospace">ANÁLISIS FINANCIERO</div>
+        <div style="font-size:13px;font-weight:600;color:#f4f4ef;padding:9px 10px;background:#1f1f1c;border-left:2px solid #e0592a">Dashboard</div>
+        <div style="font-size:13px;color:#8a8a80;padding:9px 10px">Detalle</div>
+        <div style="font-size:13px;color:#8a8a80;padding:9px 10px">Screener</div>
+        <div style="font-size:13px;color:#8a8a80;padding:9px 10px">Análisis IA</div>
+        <div style="font-size:13px;color:#8a8a80;padding:9px 10px">Mi cartera</div>
+      </div>
+      <div style="flex:1;padding:20px 24px">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;margin-bottom:12px">
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:15px 17px">
+            <div style="font-size:10px;color:#a8a294;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">S&P 500 · SPY</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:7px"><span style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#1c1a15">6.284,52</span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#0d7a4d">▲ +0,76%</span></div>
+            <svg viewBox="0 0 300 34" preserveAspectRatio="none" style="width:100%;height:34px;margin-top:7px"><path d="M0 28 L25 25 L50 27 L75 21 L100 24 L125 17 L150 20 L175 13 L200 16 L225 10 L250 13 L275 6 L300 4" fill="none" stroke="#e0592a" stroke-width="1.8"/></svg>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:15px 17px">
+            <div style="font-size:10px;color:#a8a294;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">AMPLITUD</div>
+            <div style="margin-top:7px;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#1c1a15">312<span style="font-size:12px;color:#0d7a4d">▲</span> 191<span style="font-size:12px;color:#b3362e">▼</span></div>
+            <div style="height:3px;background:#eeebe2;margin-top:14px"><div style="width:62%;height:100%;background:#e0592a"></div></div>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:15px 17px">
+            <div style="font-size:10px;color:#a8a294;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">SENTIMIENTO IA</div>
+            <div style="margin-top:7px;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#1c1a15">62 <span style="font-size:11px;color:#e0592a;font-family:'JetBrains Mono',monospace">OPTIMISTA</span></div>
+            <div style="height:3px;background:#eeebe2;margin-top:14px"><div style="width:62%;height:100%;background:#e0592a"></div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:13px 16px">
+            <div style="font-size:9.5px;font-weight:600;color:#0d7a4d;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:7px">SUBAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f2f0e9"><span style="font-size:12.5px;color:#1c1a15"><b>NVDA</b> <span style="color:#a8a294;font-size:11px">NVIDIA</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#0d7a4d">+4,21%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:12.5px;color:#1c1a15"><b>AVGO</b> <span style="color:#a8a294;font-size:11px">Broadcom</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#0d7a4d">+3,08%</span></div>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e6e3da;border-radius:8px;padding:13px 16px">
+            <div style="font-size:9.5px;font-weight:600;color:#b3362e;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:7px">BAJAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f2f0e9"><span style="font-size:12.5px;color:#1c1a15"><b>TSLA</b> <span style="color:#a8a294;font-size:11px">Tesla</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#b3362e">−3,67%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:12.5px;color:#1c1a15"><b>BA</b> <span style="color:#a8a294;font-size:11px">Boeing</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#b3362e">−2,15%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="dv-next">El modo oscuro 4a queda como está. Elegí el claro: <a href="#5a">5a</a> marfil · <a href="#5b">5b</a> gris perla · <a href="#5c">5c</a> híbrido sidebar oscuro.</div>
+</section>
+
+<section class="dv-turn" id="t4">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Rediseño v2 · 4 direcciones nuevas (profesional y pulido, claro + oscuro por tokens)</span></div>
+<div class="dv-opts">
+
+  <!-- 4a · EDITORIAL SUIZO -->
+  <div class="dv-opt" id="4a">
+    <div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a>Editorial suizo · blanco puro, líneas finas sin tarjetas, tipografía grande con Space Grotesk — sobrio estilo research/FT</div>
+    <div class="dv-card" style="width:940px;background:#ffffff;border:1px solid #e4e4e0;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.08);font-family:'IBM Plex Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:190px;border-right:1px solid #e8e8e4;padding:22px 18px;display:flex;flex-direction:column">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:#111;letter-spacing:-.3px">Finterm<span style="color:#c2410c">.</span></div>
+        <div style="font-size:8.5px;color:#a8a8a0;letter-spacing:1.6px;margin:4px 0 26px;font-family:'JetBrains Mono',monospace">ANÁLISIS FINANCIERO</div>
+        <div style="font-size:13.5px;font-weight:600;color:#111;padding:8px 0;border-bottom:2px solid #111">Dashboard</div>
+        <div style="font-size:13.5px;color:#8a8a82;padding:10px 0;border-bottom:1px solid #eeeeea">Detalle</div>
+        <div style="font-size:13.5px;color:#8a8a82;padding:10px 0;border-bottom:1px solid #eeeeea">Screener</div>
+        <div style="font-size:13.5px;color:#8a8a82;padding:10px 0;border-bottom:1px solid #eeeeea">Comparador</div>
+        <div style="font-size:13.5px;color:#8a8a82;padding:10px 0;border-bottom:1px solid #eeeeea">Análisis IA</div>
+        <div style="font-size:13.5px;color:#8a8a82;padding:10px 0">Mi cartera</div>
+      </div>
+      <div style="flex:1;padding:24px 30px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #111;padding-bottom:14px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#111;letter-spacing:-.4px">Resumen de mercado</div>
+          <div style="display:flex;gap:22px;font-size:12.5px;font-weight:600"><span style="color:#111;border-bottom:2px solid #c2410c;padding-bottom:2px">S&P 500</span><span style="color:#a0a098">Merval</span><span style="color:#a0a098">Brasil</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:0;border-bottom:1px solid #e8e8e4">
+          <div style="padding:20px 24px 20px 0;border-right:1px solid #e8e8e4">
+            <div style="font-size:10px;color:#a0a098;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">S&P 500 · SPY</div>
+            <div style="display:flex;align-items:baseline;gap:12px;margin-top:8px"><span style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:#111;letter-spacing:-1px">6.284,52</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#0d7a4d">▲ +0,76%</span></div>
+            <svg viewBox="0 0 300 40" preserveAspectRatio="none" style="width:100%;height:40px;margin-top:8px"><path d="M0 33 L25 30 L50 32 L75 25 L100 28 L125 20 L150 23 L175 16 L200 19 L225 12 L250 15 L275 8 L300 5" fill="none" stroke="#111" stroke-width="1.6"/></svg>
+          </div>
+          <div style="padding:20px 24px;border-right:1px solid #e8e8e4">
+            <div style="font-size:10px;color:#a0a098;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">AMPLITUD</div>
+            <div style="margin-top:8px;font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#111">312 <span style="font-size:13px;color:#0d7a4d">▲</span> · 191 <span style="font-size:13px;color:#b3362e">▼</span></div>
+            <div style="height:3px;background:#eeeeea;margin-top:16px"><div style="width:62%;height:100%;background:#111"></div></div>
+          </div>
+          <div style="padding:20px 0 20px 24px">
+            <div style="font-size:10px;color:#a0a098;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">SENTIMIENTO IA</div>
+            <div style="margin-top:8px;font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#111">62 <span style="font-size:12px;color:#c2410c;font-family:'JetBrains Mono',monospace">OPTIMISTA</span></div>
+            <div style="height:3px;background:#eeeeea;margin-top:16px"><div style="width:62%;height:100%;background:#c2410c"></div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;padding-top:16px">
+          <div>
+            <div style="font-size:10px;font-weight:600;color:#0d7a4d;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:8px">SUBAS</div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0ec"><span style="font-size:13px;color:#111"><b>NVDA</b> <span style="color:#a0a098;font-size:11.5px">NVIDIA</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#0d7a4d">+4,21%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0ec"><span style="font-size:13px;color:#111"><b>AVGO</b> <span style="color:#a0a098;font-size:11.5px">Broadcom</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#0d7a4d">+3,08%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font-size:13px;color:#111"><b>LLY</b> <span style="color:#a0a098;font-size:11.5px">Eli Lilly</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#0d7a4d">+2,44%</span></div>
+          </div>
+          <div>
+            <div style="font-size:10px;font-weight:600;color:#b3362e;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:8px">BAJAS</div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0ec"><span style="font-size:13px;color:#111"><b>TSLA</b> <span style="color:#a0a098;font-size:11.5px">Tesla</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#b3362e">−3,67%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0ec"><span style="font-size:13px;color:#111"><b>BA</b> <span style="color:#a0a098;font-size:11.5px">Boeing</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#b3362e">−2,15%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font-size:13px;color:#111"><b>NKE</b> <span style="color:#a0a098;font-size:11.5px">Nike</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#b3362e">−1,89%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4b · GRAFITO MONOCROMO -->
+  <div class="dv-opt" id="4b">
+    <div class="dv-olabel"><a class="dv-oid" href="#4b">4b</a>Grafito monocromo · oscuro neutro (sin azul), un solo acento verde eléctrico, bordes 1px nítidos — estilo Linear</div>
+    <div class="dv-card" style="width:940px;background:#101012;border:1px solid #232326;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.5);font-family:'IBM Plex Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:190px;border-right:1px solid #1e1e21;padding:20px 14px;display:flex;flex-direction:column;gap:2px;background:#0c0c0e">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#f4f4f2;padding:0 10px">finterm</div>
+        <div style="font-size:8.5px;color:#5b5b60;letter-spacing:1.6px;padding:2px 10px 20px;font-family:'JetBrains Mono',monospace">TERMINAL</div>
+        <div style="padding:8px 10px;border-radius:7px;background:#1b1b1f;font-size:13px;font-weight:600;color:#f4f4f2;display:flex;justify-content:space-between"><span>Dashboard</span><span style="color:#5ef29c">●</span></div>
+        <div style="padding:8px 10px;font-size:13px;color:#7e7e85">Detalle</div>
+        <div style="padding:8px 10px;font-size:13px;color:#7e7e85">Screener</div>
+        <div style="padding:8px 10px;font-size:13px;color:#7e7e85">Comparador</div>
+        <div style="padding:8px 10px;font-size:13px;color:#7e7e85">Análisis IA</div>
+        <div style="padding:8px 10px;font-size:13px;color:#7e7e85">Mi cartera</div>
+      </div>
+      <div style="flex:1;padding:22px 26px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+          <div style="display:inline-flex;background:#161618;border:1px solid #232326;border-radius:8px;padding:3px">
+            <span style="padding:6px 14px;border-radius:6px;background:#232328;color:#f4f4f2;font-size:12px;font-weight:600">S&P 500</span>
+            <span style="padding:6px 14px;font-size:12px;color:#7e7e85">Merval</span>
+            <span style="padding:6px 14px;font-size:12px;color:#7e7e85">Brasil</span>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5ef29c">● MERCADO ABIERTO</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;margin-bottom:12px">
+          <div style="background:#161618;border:1px solid #232326;border-radius:10px;padding:16px 18px">
+            <div style="font-size:10px;color:#5b5b60;letter-spacing:1px;font-family:'JetBrains Mono',monospace">S&P 500 · SPY</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:600;color:#f4f4f2">6.284,52</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#5ef29c">+0,76%</span></div>
+            <svg viewBox="0 0 300 38" preserveAspectRatio="none" style="width:100%;height:38px;margin-top:8px"><path d="M0 31 L25 28 L50 30 L75 24 L100 27 L125 19 L150 22 L175 15 L200 18 L225 11 L250 14 L275 7 L300 4" fill="none" stroke="#5ef29c" stroke-width="1.8"/></svg>
+          </div>
+          <div style="background:#161618;border:1px solid #232326;border-radius:10px;padding:16px 18px">
+            <div style="font-size:10px;color:#5b5b60;letter-spacing:1px;font-family:'JetBrains Mono',monospace">AMPLITUD</div>
+            <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600"><span style="color:#5ef29c">312</span><span style="color:#5b5b60;font-size:12px"> ▲ </span><span style="color:#f26c7a">191</span><span style="color:#5b5b60;font-size:12px"> ▼</span></div>
+            <div style="height:4px;background:#232326;margin-top:16px;border-radius:2px;overflow:hidden"><div style="width:62%;height:100%;background:#5ef29c"></div></div>
+          </div>
+          <div style="background:#161618;border:1px solid #232326;border-radius:10px;padding:16px 18px">
+            <div style="font-size:10px;color:#5b5b60;letter-spacing:1px;font-family:'JetBrains Mono',monospace">SENTIMIENTO IA</div>
+            <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:#f4f4f2">62 <span style="font-size:11px;color:#5ef29c">OPTIMISTA</span></div>
+            <div style="height:4px;background:#232326;margin-top:16px;border-radius:2px;overflow:hidden"><div style="width:62%;height:100%;background:#5ef29c"></div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="background:#161618;border:1px solid #232326;border-radius:10px;padding:14px 18px">
+            <div style="font-size:10px;color:#5ef29c;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:8px">▲ SUBAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #1e1e21"><span style="font-size:13px;color:#f4f4f2"><b>NVDA</b> <span style="color:#5b5b60;font-size:11px">NVIDIA</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5ef29c">+4,21%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #1e1e21"><span style="font-size:13px;color:#f4f4f2"><b>AVGO</b> <span style="color:#5b5b60;font-size:11px">Broadcom</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5ef29c">+3,08%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:13px;color:#f4f4f2"><b>LLY</b> <span style="color:#5b5b60;font-size:11px">Eli Lilly</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5ef29c">+2,44%</span></div>
+          </div>
+          <div style="background:#161618;border:1px solid #232326;border-radius:10px;padding:14px 18px">
+            <div style="font-size:10px;color:#f26c7a;letter-spacing:1.4px;font-family:'JetBrains Mono',monospace;margin-bottom:8px">▼ BAJAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #1e1e21"><span style="font-size:13px;color:#f4f4f2"><b>TSLA</b> <span style="color:#5b5b60;font-size:11px">Tesla</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#f26c7a">−3,67%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #1e1e21"><span style="font-size:13px;color:#f4f4f2"><b>BA</b> <span style="color:#5b5b60;font-size:11px">Boeing</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#f26c7a">−2,15%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:13px;color:#f4f4f2"><b>NKE</b> <span style="color:#5b5b60;font-size:11px">Nike</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#f26c7a">−1,89%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4c · ÍNDIGO PROFUNDO CON GRADIENTES -->
+  <div class="dv-opt" id="4c">
+    <div class="dv-olabel"><a class="dv-oid" href="#4c">4c</a>Índigo profundo · gradientes sutiles índigo→cian, tarjetas con brillo de borde, botones vibrantes — SaaS premium</div>
+    <div class="dv-card" style="width:940px;background:linear-gradient(170deg,#0e1220,#131a30);border:1px solid #262f4d;border-radius:18px;box-shadow:0 14px 48px rgba(0,0,0,.5);font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:196px;padding:22px 14px;display:flex;flex-direction:column;gap:3px;background:rgba(255,255,255,.02);border-right:1px solid #232c48">
+        <div style="display:flex;align-items:center;gap:8px;padding:0 10px 20px"><div style="width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#6d7cff,#3ec6e0);display:flex;align-items:center;justify-content:center;color:#0e1220;font-weight:800;font-size:13px">F</div><span style="font-weight:800;font-size:16px;color:#f0f3ff">Finterm</span></div>
+        <div style="padding:9px 12px;border-radius:9px;background:linear-gradient(90deg,rgba(109,124,255,.22),rgba(62,198,224,.10));border:1px solid rgba(109,124,255,.35);font-size:13px;font-weight:700;color:#f0f3ff">Dashboard</div>
+        <div style="padding:9px 12px;font-size:13px;color:#7a86ad">Detalle</div>
+        <div style="padding:9px 12px;font-size:13px;color:#7a86ad">Screener</div>
+        <div style="padding:9px 12px;font-size:13px;color:#7a86ad">Comparador</div>
+        <div style="padding:9px 12px;font-size:13px;color:#7a86ad">Análisis IA</div>
+        <div style="padding:9px 12px;font-size:13px;color:#7a86ad">Mi cartera</div>
+      </div>
+      <div style="flex:1;padding:22px 26px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+          <div style="display:inline-flex;background:rgba(255,255,255,.04);border:1px solid #262f4d;border-radius:10px;padding:3px">
+            <span style="padding:6px 15px;border-radius:8px;background:linear-gradient(90deg,#6d7cff,#5a6cf0);color:#fff;font-size:12px;font-weight:700">S&P 500</span>
+            <span style="padding:6px 15px;font-size:12px;color:#7a86ad;font-weight:600">Merval</span>
+            <span style="padding:6px 15px;font-size:12px;color:#7a86ad;font-weight:600">Brasil</span>
+          </div>
+          <div style="padding:7px 16px;border-radius:9px;background:linear-gradient(90deg,#6d7cff,#3ec6e0);color:#0e1220;font-size:12px;font-weight:800">＋ Analizar con IA</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;margin-bottom:12px">
+          <div style="background:rgba(255,255,255,.035);border:1px solid #2a3556;border-radius:14px;padding:16px 18px">
+            <div style="font-size:10.5px;color:#7a86ad;font-weight:600;letter-spacing:.6px">S&P 500 · SPY</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:600;color:#f0f3ff">6.284,52</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#43e5a0">+0,76%</span></div>
+            <svg viewBox="0 0 300 40" preserveAspectRatio="none" style="width:100%;height:40px;margin-top:8px"><defs><linearGradient id="g4c" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6d7cff"/><stop offset="100%" stop-color="#3ec6e0"/></linearGradient></defs><path d="M0 33 L25 30 L50 32 L75 25 L100 28 L125 20 L150 23 L175 16 L200 19 L225 12 L250 15 L275 8 L300 5" fill="none" stroke="url(#g4c)" stroke-width="2.2" stroke-linecap="round"/></svg>
+          </div>
+          <div style="background:rgba(255,255,255,.035);border:1px solid #2a3556;border-radius:14px;padding:16px 18px">
+            <div style="font-size:10.5px;color:#7a86ad;font-weight:600;letter-spacing:.6px">Amplitud</div>
+            <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600"><span style="color:#43e5a0">312▲</span> <span style="color:#ff7d92">191▼</span></div>
+            <div style="height:5px;background:#232c48;margin-top:15px;border-radius:3px;overflow:hidden"><div style="width:62%;height:100%;background:linear-gradient(90deg,#6d7cff,#43e5a0)"></div></div>
+          </div>
+          <div style="background:rgba(255,255,255,.035);border:1px solid #2a3556;border-radius:14px;padding:16px 18px">
+            <div style="font-size:10.5px;color:#7a86ad;font-weight:600;letter-spacing:.6px">Sentimiento IA</div>
+            <div style="margin-top:8px;display:flex;align-items:center;gap:9px"><span style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:#f0f3ff">62</span><span style="font-size:10.5px;font-weight:800;color:#0e1220;background:linear-gradient(90deg,#43e5a0,#3ec6e0);padding:3px 10px;border-radius:10px">OPTIMISTA</span></div>
+            <div style="height:5px;background:#232c48;margin-top:15px;border-radius:3px;overflow:hidden"><div style="width:62%;height:100%;background:linear-gradient(90deg,#f2b83b,#43e5a0)"></div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="background:rgba(67,229,160,.05);border:1px solid rgba(67,229,160,.22);border-radius:14px;padding:14px 18px">
+            <div style="font-size:10.5px;font-weight:800;color:#43e5a0;letter-spacing:1px;margin-bottom:8px">▲ SUBAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)"><span style="font-size:13px;color:#f0f3ff"><b>NVDA</b> <span style="color:#7a86ad;font-size:11px">NVIDIA</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#43e5a0">+4,21%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)"><span style="font-size:13px;color:#f0f3ff"><b>AVGO</b> <span style="color:#7a86ad;font-size:11px">Broadcom</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#43e5a0">+3,08%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:13px;color:#f0f3ff"><b>LLY</b> <span style="color:#7a86ad;font-size:11px">Eli Lilly</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#43e5a0">+2,44%</span></div>
+          </div>
+          <div style="background:rgba(255,125,146,.05);border:1px solid rgba(255,125,146,.22);border-radius:14px;padding:14px 18px">
+            <div style="font-size:10.5px;font-weight:800;color:#ff7d92;letter-spacing:1px;margin-bottom:8px">▼ BAJAS</div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)"><span style="font-size:13px;color:#f0f3ff"><b>TSLA</b> <span style="color:#7a86ad;font-size:11px">Tesla</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#ff7d92">−3,67%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)"><span style="font-size:13px;color:#f0f3ff"><b>BA</b> <span style="color:#7a86ad;font-size:11px">Boeing</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#ff7d92">−2,15%</span></div>
+            <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:13px;color:#f0f3ff"><b>NKE</b> <span style="color:#7a86ad;font-size:11px">Nike</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#ff7d92">−1,89%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4d · CARBON INSTITUCIONAL -->
+  <div class="dv-opt" id="4d">
+    <div class="dv-olabel"><a class="dv-oid" href="#4d">4d</a>Carbon institucional · esquinas rectas, azul corporativo #0f62fe, grilla estricta, denso y bancario — estilo IBM Carbon</div>
+    <div class="dv-card" style="width:940px;background:#f4f4f4;border:1px solid #d5d5d5;border-radius:4px;box-shadow:0 8px 28px rgba(0,0,0,.12);font-family:'IBM Plex Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:190px;background:#161616;padding:0;display:flex;flex-direction:column">
+        <div style="padding:20px 18px 18px;border-bottom:1px solid #2b2b2b"><span style="font-weight:600;font-size:15px;color:#fff">FINTERM</span><span style="color:#0f62fe;font-weight:700"> ▪</span><div style="font-size:8.5px;color:#8d8d8d;letter-spacing:1.4px;margin-top:3px;font-family:'JetBrains Mono',monospace">TERMINAL DE ANÁLISIS</div></div>
+        <div style="padding:11px 18px;background:#262626;border-left:3px solid #0f62fe;font-size:13px;font-weight:600;color:#fff">Dashboard</div>
+        <div style="padding:11px 18px;font-size:13px;color:#a8a8a8">Detalle</div>
+        <div style="padding:11px 18px;font-size:13px;color:#a8a8a8">Screener</div>
+        <div style="padding:11px 18px;font-size:13px;color:#a8a8a8">Comparador</div>
+        <div style="padding:11px 18px;font-size:13px;color:#a8a8a8">Análisis IA</div>
+        <div style="padding:11px 18px;font-size:13px;color:#a8a8a8">Mi cartera</div>
+      </div>
+      <div style="flex:1;padding:20px 24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <div style="display:inline-flex;border:1px solid #c6c6c6">
+            <span style="padding:7px 16px;background:#0f62fe;color:#fff;font-size:12px;font-weight:600">S&P 500</span>
+            <span style="padding:7px 16px;font-size:12px;color:#525252;background:#fff;border-left:1px solid #c6c6c6">Merval</span>
+            <span style="padding:7px 16px;font-size:12px;color:#525252;background:#fff;border-left:1px solid #c6c6c6">Brasil</span>
+          </div>
+          <div style="width:250px;background:#fff;border-bottom:1px solid #8d8d8d;padding:8px 12px;font-size:12px;color:#8d8d8d">⌕ Buscar empresa o ticker</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1px;background:#d5d5d5;border:1px solid #d5d5d5;margin-bottom:14px">
+          <div style="background:#ffffff;padding:16px 18px">
+            <div style="font-size:11px;color:#525252">S&P 500 · SPY</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:500;color:#161616">6.284,52</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#198038">+0,76%</span></div>
+            <svg viewBox="0 0 300 36" preserveAspectRatio="none" style="width:100%;height:36px;margin-top:8px"><path d="M0 30 L25 27 L50 29 L75 23 L100 26 L125 18 L150 21 L175 14 L200 17 L225 10 L250 13 L275 6 L300 4" fill="none" stroke="#0f62fe" stroke-width="1.8"/></svg>
+          </div>
+          <div style="background:#ffffff;padding:16px 18px">
+            <div style="font-size:11px;color:#525252">Amplitud</div>
+            <div style="margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:19px;color:#161616"><span style="color:#198038">312▲</span> <span style="color:#da1e28">191▼</span></div>
+            <div style="height:4px;background:#e0e0e0;margin-top:16px"><div style="width:62%;height:100%;background:#198038"></div></div>
+          </div>
+          <div style="background:#ffffff;padding:16px 18px">
+            <div style="font-size:11px;color:#525252">Sentimiento IA</div>
+            <div style="margin-top:6px;display:flex;align-items:center;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:19px;color:#161616">62</span><span style="font-size:10.5px;font-weight:600;color:#fff;background:#198038;padding:2px 9px">OPTIMISTA</span></div>
+            <div style="height:4px;background:#e0e0e0;margin-top:16px"><div style="width:62%;height:100%;background:#0f62fe"></div></div>
+          </div>
+        </div>
+        <div style="background:#ffffff;border:1px solid #d5d5d5">
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #e0e0e0">
+            <div style="padding:9px 16px;font-size:11px;font-weight:600;color:#198038;border-right:1px solid #e0e0e0">▲ SUBAS</div>
+            <div style="padding:9px 16px;font-size:11px;font-weight:600;color:#da1e28">▼ BAJAS</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <div style="border-right:1px solid #e0e0e0">
+              <div style="display:flex;justify-content:space-between;padding:8px 16px;border-bottom:1px solid #f0f0f0"><span style="font-size:12.5px;color:#161616"><b>NVDA</b> <span style="color:#8d8d8d;font-size:11px">NVIDIA</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#198038">+4,21%</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 16px;border-bottom:1px solid #f0f0f0"><span style="font-size:12.5px;color:#161616"><b>AVGO</b> <span style="color:#8d8d8d;font-size:11px">Broadcom</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#198038">+3,08%</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 16px"><span style="font-size:12.5px;color:#161616"><b>LLY</b> <span style="color:#8d8d8d;font-size:11px">Eli Lilly</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#198038">+2,44%</span></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;padding:8px 16px;border-bottom:1px solid #f0f0f0"><span style="font-size:12.5px;color:#161616"><b>TSLA</b> <span style="color:#8d8d8d;font-size:11px">Tesla</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#da1e28">−3,67%</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 16px;border-bottom:1px solid #f0f0f0"><span style="font-size:12.5px;color:#161616"><b>BA</b> <span style="color:#8d8d8d;font-size:11px">Boeing</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#da1e28">−2,15%</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 16px"><span style="font-size:12.5px;color:#161616"><b>NKE</b> <span style="color:#8d8d8d;font-size:11px">Nike</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#da1e28">−1,89%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="dv-next">Cada dirección se aplica a ambos temas (claro/oscuro) por tokens. Elegí: <a href="#4a">4a</a> editorial · <a href="#4b">4b</a> grafito · <a href="#4c">4c</a> índigo · <a href="#4d">4d</a> carbon.</div>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Rediseño "profesional y pulido" · Dashboard — 3 direcciones (claro y oscuro comparten tokens)</span></div>
+<div class="dv-opts">
+
+  <!-- ========== 3a · INSTITUCIONAL REFINADO (claro) ========== -->
+  <div class="dv-opt" id="3a">
+    <div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Institucional refinado · identidad actual pulida: jerarquía tipográfica clara, sombras sutiles, tablas aireadas</div>
+    <div class="dv-card" style="width:980px;background:#f7f8fa;border:1px solid #e5e8ee;border-radius:20px;box-shadow:0 10px 36px rgba(15,23,42,.10);font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:200px;background:#ffffff;border-right:1px solid #e9ecf1;padding:20px 14px;display:flex;flex-direction:column;gap:2px">
+        <div style="font-weight:800;font-size:16px;color:#0f1729;letter-spacing:-.3px;padding:0 10px 4px">FINTERM</div>
+        <div style="font-size:9px;color:#9aa3b2;letter-spacing:1.2px;padding:0 10px 16px;font-family:'JetBrains Mono',monospace">TERMINAL DE ANÁLISIS</div>
+        <div style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;background:#eef2ff;border-left:3px solid #4f63e6;font-size:13px;font-weight:700;color:#0f1729"><span style="width:5px;height:5px;border-radius:50%;background:#4f63e6"></span>Dashboard</div>
+        <div style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;font-size:13px;font-weight:500;color:#5b6472"><span style="width:5px;height:5px;border-radius:50%;background:#d7b25c"></span>Detalle</div>
+        <div style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;font-size:13px;font-weight:500;color:#5b6472"><span style="width:5px;height:5px;border-radius:50%;background:#3aa8a0"></span>Screener</div>
+        <div style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;font-size:13px;font-weight:500;color:#5b6472"><span style="width:5px;height:5px;border-radius:50%;background:#8b7ce8"></span>Comparador</div>
+        <div style="display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;font-size:13px;font-weight:500;color:#5b6472"><span style="width:5px;height:5px;border-radius:50%;background:#2fa06a"></span>Análisis IA</div>
+      </div>
+      <div style="flex:1;padding:22px 26px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+          <div style="display:inline-flex;background:#ffffff;border:1px solid #e0e3ea;border-radius:9px;padding:3px;box-shadow:0 1px 2px rgba(15,23,42,.05)">
+            <span style="padding:6px 14px;border-radius:6px;background:#0f1729;color:#fff;font-size:12px;font-weight:700">S&P 500</span>
+            <span style="padding:6px 14px;font-size:12px;font-weight:600;color:#5b6472">Merval</span>
+            <span style="padding:6px 14px;font-size:12px;font-weight:600;color:#5b6472">Brasil</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:230px;background:#ffffff;border:1px solid #e0e3ea;border-radius:8px;padding:8px 12px;font-size:12px;color:#9aa3b2;box-shadow:0 1px 2px rgba(15,23,42,.04)">⌕ Buscar empresa o ticker…</div>
+            <div style="width:34px;height:34px;border-radius:8px;background:#ffffff;border:1px solid #e0e3ea;display:flex;align-items:center;justify-content:center;font-size:14px">☾</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px;margin-bottom:16px">
+          <div style="background:#ffffff;border:1px solid #e9ecf1;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(15,23,42,.06)">
+            <div style="font-size:11px;font-weight:600;color:#9aa3b2;letter-spacing:.6px;text-transform:uppercase">S&P 500 · SPY</div>
+            <div style="display:flex;align-items:baseline;gap:12px;margin-top:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;color:#0f1729;letter-spacing:-.5px">6.284,52</span><span style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:#1e8a5a">+0,76%</span></div>
+            <svg viewBox="0 0 300 44" preserveAspectRatio="none" style="width:100%;height:44px;margin-top:10px"><path d="M0 36 L25 32 L50 35 L75 27 L100 30 L125 22 L150 26 L175 18 L200 22 L225 14 L250 17 L275 10 L300 7" fill="none" stroke="#1e8a5a" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e9ecf1;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(15,23,42,.06)">
+            <div style="font-size:11px;font-weight:600;color:#9aa3b2;letter-spacing:.6px;text-transform:uppercase">Amplitud</div>
+            <div style="display:flex;align-items:baseline;gap:8px;margin-top:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:#1e8a5a">312</span><span style="font-size:12px;color:#9aa3b2">suben</span><span style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:#c73e46">191</span><span style="font-size:12px;color:#9aa3b2">bajan</span></div>
+            <div style="height:6px;border-radius:4px;background:#f0d9da;margin-top:14px;overflow:hidden"><div style="width:62%;height:100%;background:#1e8a5a"></div></div>
+          </div>
+          <div style="background:#ffffff;border:1px solid #e9ecf1;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(15,23,42,.06)">
+            <div style="font-size:11px;font-weight:600;color:#9aa3b2;letter-spacing:.6px;text-transform:uppercase">Sentimiento</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:#0f1729">62</span><span style="font-size:12px;font-weight:700;color:#1e8a5a;background:#e8f4ee;padding:3px 10px;border-radius:12px">Optimista</span></div>
+            <div style="height:6px;border-radius:4px;background:#eef0f4;margin-top:14px;overflow:hidden"><div style="width:62%;height:100%;background:linear-gradient(90deg,#d7b25c,#1e8a5a)"></div></div>
+          </div>
+        </div>
+        <div style="background:#ffffff;border:1px solid #e9ecf1;border-radius:12px;box-shadow:0 1px 3px rgba(15,23,42,.06);overflow:hidden">
+          <div style="padding:14px 20px;border-bottom:1px solid #eef0f4;font-size:13px;font-weight:700;color:#0f1729">Mayores movimientos del día</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <div style="padding:14px 20px;border-right:1px solid #eef0f4">
+              <div style="font-size:10px;font-weight:700;color:#1e8a5a;letter-spacing:.8px;margin-bottom:10px">▲ SUBAS</div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f4f5f8"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;color:#0f1729">NVDA <span style="color:#9aa3b2;font-weight:400;font-size:11px">NVIDIA</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#1e8a5a;font-weight:600">+4,21%</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f4f5f8"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;color:#0f1729">AVGO <span style="color:#9aa3b2;font-weight:400;font-size:11px">Broadcom</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#1e8a5a;font-weight:600">+3,08%</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;color:#0f1729">LLY <span style="color:#9aa3b2;font-weight:400;font-size:11px">Eli Lilly</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#1e8a5a;font-weight:600">+2,44%</span></div>
+            </div>
+            <div style="padding:14px 20px">
+              <div style="font-size:10px;font-weight:700;color:#c73e46;letter-spacing:.8px;margin-bottom:10px">▼ BAJAS</div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f4f5f8"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;color:#0f1729">TSLA <span style="color:#9aa3b2;font-weight:400;font-size:11px">Tesla</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#c73e46;font-weight:600">−3,67%</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f4f5f8"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;color:#0f1729">BA <span style="color:#9aa3b2;font-weight:400;font-size:11px">Boeing</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#c73e46;font-weight:600">−2,15%</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;color:#0f1729">NKE <span style="color:#9aa3b2;font-weight:400;font-size:11px">Nike</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#c73e46;font-weight:600">−1,89%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 3b · FINTECH PREMIUM (claro, más aire) ========== -->
+  <div class="dv-opt" id="3b">
+    <div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Fintech premium · más aire, tarjetas flotantes, azul profundo + numeración grande (estilo Mercury/Ramp)</div>
+    <div class="dv-card" style="width:980px;background:#fbfbfd;border:1px solid #e8e9ef;border-radius:20px;box-shadow:0 10px 36px rgba(15,23,42,.10);font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:210px;background:#101b33;padding:22px 16px;display:flex;flex-direction:column;gap:3px">
+        <div style="font-weight:800;font-size:16px;color:#ffffff;letter-spacing:-.3px;padding:0 10px 2px">FINTERM</div>
+        <div style="font-size:9px;color:#5e6c8f;letter-spacing:1.2px;padding:0 10px 18px;font-family:'JetBrains Mono',monospace">TERMINAL DE ANÁLISIS</div>
+        <div style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.10);font-size:13.5px;font-weight:700;color:#ffffff">Dashboard</div>
+        <div style="padding:10px 12px;border-radius:10px;font-size:13.5px;font-weight:500;color:#93a1c4">Detalle</div>
+        <div style="padding:10px 12px;border-radius:10px;font-size:13.5px;font-weight:500;color:#93a1c4">Screener</div>
+        <div style="padding:10px 12px;border-radius:10px;font-size:13.5px;font-weight:500;color:#93a1c4">Comparador</div>
+        <div style="padding:10px 12px;border-radius:10px;font-size:13.5px;font-weight:500;color:#93a1c4">Análisis IA</div>
+        <div style="margin-top:auto;padding:12px;border-radius:12px;background:rgba(255,255,255,.06);font-size:11px;color:#93a1c4;line-height:1.5">Mi cartera<br><span style="color:#fff;font-weight:700;font-size:15px;font-family:'JetBrains Mono',monospace">$ 11,5 M</span> <span style="color:#4ade80;font-weight:600">+4,2%</span></div>
+      </div>
+      <div style="flex:1;padding:26px 30px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+          <div><div style="font-size:20px;font-weight:800;color:#101b33;letter-spacing:-.4px">Buen día 👋</div><div style="font-size:12.5px;color:#8b93a7;margin-top:2px">Miércoles 9 de julio · mercados abiertos</div></div>
+          <div style="display:inline-flex;background:#eef0f6;border-radius:12px;padding:4px">
+            <span style="padding:7px 16px;border-radius:9px;background:#ffffff;color:#101b33;font-size:12.5px;font-weight:700;box-shadow:0 1px 4px rgba(16,27,51,.12)">S&P 500</span>
+            <span style="padding:7px 16px;font-size:12.5px;font-weight:600;color:#8b93a7">Merval</span>
+            <span style="padding:7px 16px;font-size:12.5px;font-weight:600;color:#8b93a7">Brasil</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-bottom:18px">
+          <div style="background:#ffffff;border-radius:18px;padding:24px;box-shadow:0 2px 12px rgba(16,27,51,.07)">
+            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;font-weight:600;color:#8b93a7">S&P 500</span><span style="font-size:11px;font-weight:700;color:#1f8a5b;background:#e6f6ee;padding:4px 12px;border-radius:14px">Mercado alcista</span></div>
+            <div style="display:flex;align-items:baseline;gap:14px;margin-top:10px"><span style="font-family:'JetBrains Mono',monospace;font-size:38px;font-weight:600;color:#101b33;letter-spacing:-1px">6.284</span><span style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;color:#1f8a5b">▲ +0,76%</span></div>
+            <svg viewBox="0 0 400 54" preserveAspectRatio="none" style="width:100%;height:54px;margin-top:12px"><defs><linearGradient id="g3b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1f8a5b" stop-opacity=".18"/><stop offset="100%" stop-color="#1f8a5b" stop-opacity="0"/></linearGradient></defs><path d="M0 44 L33 40 L66 43 L100 34 L133 38 L166 28 L200 32 L233 23 L266 27 L300 17 L333 21 L366 12 L400 8 L400 54 L0 54 Z" fill="url(#g3b)"/><path d="M0 44 L33 40 L66 43 L100 34 L133 38 L166 28 L200 32 L233 23 L266 27 L300 17 L333 21 L366 12 L400 8" fill="none" stroke="#1f8a5b" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="background:#ffffff;border-radius:18px;padding:18px 22px;box-shadow:0 2px 12px rgba(16,27,51,.07)"><div style="font-size:12px;font-weight:600;color:#8b93a7">Amplitud del mercado</div><div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:#1f8a5b">312▲</span><span style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:#d64550">191▼</span></div></div>
+            <div style="background:linear-gradient(135deg,#101b33,#1c2c52);border-radius:18px;padding:18px 22px;box-shadow:0 4px 16px rgba(16,27,51,.25)"><div style="font-size:12px;font-weight:600;color:#93a1c4">Sentimiento IA</div><div style="display:flex;align-items:center;gap:10px;margin-top:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:600;color:#fff">62</span><span style="font-size:11.5px;font-weight:700;color:#4ade80">OPTIMISTA</span></div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+          <div style="background:#ffffff;border-radius:18px;padding:20px 22px;box-shadow:0 2px 12px rgba(16,27,51,.07)">
+            <div style="font-size:12.5px;font-weight:700;color:#101b33;margin-bottom:12px">▲ Mayores subas</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #f1f2f7"><div><span style="font-weight:700;font-size:13.5px;color:#101b33">NVDA</span><span style="font-size:11px;color:#8b93a7;margin-left:8px">NVIDIA</span></div><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#1f8a5b;background:#e6f6ee;padding:4px 11px;border-radius:10px">+4,21%</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #f1f2f7"><div><span style="font-weight:700;font-size:13.5px;color:#101b33">AVGO</span><span style="font-size:11px;color:#8b93a7;margin-left:8px">Broadcom</span></div><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#1f8a5b;background:#e6f6ee;padding:4px 11px;border-radius:10px">+3,08%</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0"><div><span style="font-weight:700;font-size:13.5px;color:#101b33">LLY</span><span style="font-size:11px;color:#8b93a7;margin-left:8px">Eli Lilly</span></div><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#1f8a5b;background:#e6f6ee;padding:4px 11px;border-radius:10px">+2,44%</span></div>
+          </div>
+          <div style="background:#ffffff;border-radius:18px;padding:20px 22px;box-shadow:0 2px 12px rgba(16,27,51,.07)">
+            <div style="font-size:12.5px;font-weight:700;color:#101b33;margin-bottom:12px">▼ Mayores bajas</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #f1f2f7"><div><span style="font-weight:700;font-size:13.5px;color:#101b33">TSLA</span><span style="font-size:11px;color:#8b93a7;margin-left:8px">Tesla</span></div><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#d64550;background:#fdeaec;padding:4px 11px;border-radius:10px">−3,67%</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #f1f2f7"><div><span style="font-weight:700;font-size:13.5px;color:#101b33">BA</span><span style="font-size:11px;color:#8b93a7;margin-left:8px">Boeing</span></div><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#d64550;background:#fdeaec;padding:4px 11px;border-radius:10px">−2,15%</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0"><div><span style="font-weight:700;font-size:13.5px;color:#101b33">NKE</span><span style="font-size:11px;color:#8b93a7;margin-left:8px">Nike</span></div><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#d64550;background:#fdeaec;padding:4px 11px;border-radius:10px">−1,89%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 3c · TERMINAL PRO (oscuro, denso) ========== -->
+  <div class="dv-opt" id="3c">
+    <div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>Terminal pro · oscuro denso de alto contraste, acento ámbar, líneas finas (estilo mesa de dinero)</div>
+    <div class="dv-card" style="width:980px;background:#0b0e16;border:1px solid #1c2333;border-radius:20px;box-shadow:0 12px 44px rgba(0,0,0,.5);font-family:'IBM Plex Sans',sans-serif;overflow:hidden;display:flex">
+      <div style="width:188px;background:#0d111c;border-right:1px solid #1c2333;padding:18px 12px;display:flex;flex-direction:column;gap:1px">
+        <div style="font-weight:700;font-size:15px;color:#f2b83b;letter-spacing:.5px;padding:0 10px 2px;font-family:'JetBrains Mono',monospace">FINTERM</div>
+        <div style="font-size:8.5px;color:#4d5871;letter-spacing:1.4px;padding:0 10px 16px;font-family:'JetBrains Mono',monospace">TERMINAL DE ANÁLISIS</div>
+        <div style="padding:8px 10px;background:#141a29;border-left:2px solid #f2b83b;font-size:12.5px;font-weight:600;color:#e8edf7;font-family:'JetBrains Mono',monospace">DASHBOARD</div>
+        <div style="padding:8px 10px;font-size:12.5px;font-weight:500;color:#67718c;font-family:'JetBrains Mono',monospace">DETALLE</div>
+        <div style="padding:8px 10px;font-size:12.5px;font-weight:500;color:#67718c;font-family:'JetBrains Mono',monospace">SCREENER</div>
+        <div style="padding:8px 10px;font-size:12.5px;font-weight:500;color:#67718c;font-family:'JetBrains Mono',monospace">COMPARADOR</div>
+        <div style="padding:8px 10px;font-size:12.5px;font-weight:500;color:#67718c;font-family:'JetBrains Mono',monospace">ANÁLISIS IA</div>
+      </div>
+      <div style="flex:1;padding:18px 22px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <div style="display:inline-flex;border:1px solid #273046;border-radius:6px;overflow:hidden">
+            <span style="padding:6px 14px;background:#f2b83b;color:#0b0e16;font-size:11.5px;font-weight:700;font-family:'JetBrains Mono',monospace">S&P 500</span>
+            <span style="padding:6px 14px;font-size:11.5px;font-weight:600;color:#67718c;font-family:'JetBrains Mono',monospace">MERVAL</span>
+            <span style="padding:6px 14px;font-size:11.5px;font-weight:600;color:#67718c;font-family:'JetBrains Mono',monospace">BRASIL</span>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4d5871">09 JUL 2026 · 14:32 ET · <span style="color:#3fdd8c">● MERCADO ABIERTO</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:10px;margin-bottom:12px">
+          <div style="background:#0f1420;border:1px solid #1c2333;border-radius:8px;padding:14px 16px">
+            <div style="font-size:10px;font-weight:600;color:#4d5871;letter-spacing:1px;font-family:'JetBrains Mono',monospace">S&P 500 · SPY</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:27px;font-weight:600;color:#e8edf7">6.284,52</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#3fdd8c">+0,76%</span></div>
+            <svg viewBox="0 0 300 36" preserveAspectRatio="none" style="width:100%;height:36px;margin-top:8px"><path d="M0 30 L25 27 L50 29 L75 22 L100 25 L125 18 L150 21 L175 14 L200 17 L225 11 L250 14 L275 8 L300 5" fill="none" stroke="#3fdd8c" stroke-width="1.8"/></svg>
+          </div>
+          <div style="background:#0f1420;border:1px solid #1c2333;border-radius:8px;padding:14px 16px">
+            <div style="font-size:10px;font-weight:600;color:#4d5871;letter-spacing:1px;font-family:'JetBrains Mono',monospace">AMPLITUD</div>
+            <div style="display:flex;align-items:baseline;gap:6px;margin-top:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:600;color:#3fdd8c">312</span><span style="font-size:10px;color:#4d5871">SUBEN</span><span style="font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:600;color:#ff5d67">191</span><span style="font-size:10px;color:#4d5871">BAJAN</span></div>
+            <div style="height:4px;background:#341e26;margin-top:12px"><div style="width:62%;height:100%;background:#3fdd8c"></div></div>
+          </div>
+          <div style="background:#0f1420;border:1px solid #1c2333;border-radius:8px;padding:14px 16px">
+            <div style="font-size:10px;font-weight:600;color:#4d5871;letter-spacing:1px;font-family:'JetBrains Mono',monospace">SENTIMIENTO IA</div>
+            <div style="display:flex;align-items:baseline;gap:8px;margin-top:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:600;color:#f2b83b">62</span><span style="font-size:10.5px;font-weight:700;color:#3fdd8c;font-family:'JetBrains Mono',monospace">OPTIMISTA</span></div>
+            <div style="height:4px;background:#1c2333;margin-top:12px"><div style="width:62%;height:100%;background:linear-gradient(90deg,#f2b83b,#3fdd8c)"></div></div>
+          </div>
+        </div>
+        <div style="background:#0f1420;border:1px solid #1c2333;border-radius:8px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #1c2333">
+            <div style="padding:9px 16px;font-size:10px;font-weight:700;color:#3fdd8c;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace;border-right:1px solid #1c2333">▲ SUBAS</div>
+            <div style="padding:9px 16px;font-size:10px;font-weight:700;color:#ff5d67;letter-spacing:1.2px;font-family:'JetBrains Mono',monospace">▼ BAJAS</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <div style="border-right:1px solid #1c2333">
+              <div style="display:flex;justify-content:space-between;padding:7px 16px;border-bottom:1px solid #141a29"><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;color:#e8edf7">NVDA <span style="color:#4d5871;font-weight:400;font-size:10.5px">NVIDIA</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#3fdd8c">+4,21</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 16px;border-bottom:1px solid #141a29"><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;color:#e8edf7">AVGO <span style="color:#4d5871;font-weight:400;font-size:10.5px">Broadcom</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#3fdd8c">+3,08</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 16px"><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;color:#e8edf7">LLY <span style="color:#4d5871;font-weight:400;font-size:10.5px">Eli Lilly</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#3fdd8c">+2,44</span></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;padding:7px 16px;border-bottom:1px solid #141a29"><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;color:#e8edf7">TSLA <span style="color:#4d5871;font-weight:400;font-size:10.5px">Tesla</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#ff5d67">−3,67</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 16px;border-bottom:1px solid #141a29"><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;color:#e8edf7">BA <span style="color:#4d5871;font-weight:400;font-size:10.5px">Boeing</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#ff5d67">−2,15</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 16px"><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;color:#e8edf7">NKE <span style="color:#4d5871;font-weight:400;font-size:10.5px">Nike</span></span><span style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#ff5d67">−1,89</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:10px;color:#4d5871;font-family:'JetBrains Mono',monospace">CADA DIRECCIÓN TIENE SU PAR CLARO/OSCURO — SE APLICA A AMBOS TEMAS</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="dv-next">Elegí una dirección (<a href="#3a">3a</a> institucional · <a href="#3b">3b</a> fintech premium · <a href="#3c">3c</a> terminal pro) y la aplico a toda la plataforma en sus dos temas.</div>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Modo Dark para <a class="dv-oid" href="#1a">1a</a> · con botón ☀/☾ — 3 variantes</span></div>
+<div class="dv-opts">
+
+  <!-- ========== 2a · DARK SLATE ========== -->
+  <div class="dv-opt" id="2a">
+    <div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Dark slate · gris azulado neutro, acento índigo — el más equilibrado</div>
+    <div class="dv-card" style="width:900px;background:#0f1521;border:1px solid #222b3c;border-radius:22px;box-shadow:0 10px 40px rgba(0,0,0,.4);font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden">
+      <div style="padding:24px 32px 30px">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
+          <div style="display:inline-flex;background:#182030;border:1px solid #28324500;border:1px solid #283245;border-radius:999px;padding:3px">
+            <span style="padding:5px 10px;border-radius:999px;font-size:13px;color:#8b94a6">☀</span>
+            <span style="padding:5px 10px;border-radius:999px;font-size:13px;background:#818cf8;color:#0f1521;font-weight:700">☾</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between">
+          <div style="display:flex;gap:16px;align-items:center">
+            <div style="width:52px;height:52px;border-radius:15px;background:linear-gradient(140deg,#818cf8,#6366f1);display:flex;align-items:center;justify-content:center;color:#0f1521;font-weight:800;font-size:20px">A</div>
+            <div>
+              <div style="display:flex;align-items:center;gap:10px"><span style="font-size:24px;font-weight:800;color:#eef1f6">AAPL</span><span style="font-size:12px;font-weight:600;color:#a5b0ff;background:rgba(129,140,248,.15);padding:4px 11px;border-radius:20px">Tecnología</span></div>
+              <div style="font-size:14px;color:#8b94a6;margin-top:3px;font-weight:500">Apple Inc. · NASDAQ</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:30px;font-weight:800;color:#eef1f6;letter-spacing:-.5px">US$ 289,23</div>
+            <div style="display:inline-flex;align-items:center;gap:6px;margin-top:5px;background:rgba(52,211,153,.14);color:#34d399;font-weight:700;font-size:13px;padding:5px 12px;border-radius:20px">▲ +US$ 1,78 · +0,62%</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-top:24px">
+          <div style="background:#161d2b;border:1px solid #232c3e;border-radius:18px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:13px;font-weight:600;color:#c2cad6">Últimos 30 días</span><span style="font-size:12px;color:#6b7488;font-weight:600">Cap. 4,17 B</span></div>
+            <svg viewBox="0 0 560 120" preserveAspectRatio="none" style="width:100%;height:110px;display:block">
+              <defs><linearGradient id="g2a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399" stop-opacity="0.24"/><stop offset="100%" stop-color="#34d399" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22 L560 120 L0 120 Z" fill="url(#g2a)"/>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div style="background:#161d2b;border:1px solid #232c3e;border-radius:18px;padding:20px;display:flex;flex-direction:column">
+            <div style="font-size:12px;font-weight:600;color:#8b94a6;margin-bottom:12px">Veredicto IA</div>
+            <div style="align-self:flex-start;background:rgba(52,211,153,.14);color:#34d399;font-weight:800;font-size:18px;padding:9px 18px;border-radius:14px">COMPRA</div>
+            <div style="font-size:12px;color:#8b94a6;margin-top:16px;font-weight:500">Confianza 72%</div>
+            <div style="height:8px;background:#222b3c;border-radius:5px;margin-top:7px;overflow:hidden"><div style="width:72%;height:100%;background:#34d399;border-radius:5px"></div></div>
+            <div style="margin-top:auto;padding-top:16px;font-size:13px;color:#a5b0ff;font-weight:700">Ver análisis completo →</div>
+          </div>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#c2cad6;margin:24px 0 14px">Coeficientes y ratios</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          <div style="background:#161d2b;border:1px solid #232c3e;border-left:4px solid #fbbf24;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8b94a6;font-weight:600">P/E</div><div style="font-size:22px;font-weight:800;color:#eef1f6;margin-top:3px">33,7×</div><div style="font-size:11px;color:#6b7488;margin-top:2px;font-weight:500">Precio / Ganancias</div></div>
+          <div style="background:#161d2b;border:1px solid #232c3e;border-left:4px solid #fbbf24;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8b94a6;font-weight:600">EV/EBITDA</div><div style="font-size:22px;font-weight:800;color:#eef1f6;margin-top:3px">26,0×</div><div style="font-size:11px;color:#6b7488;margin-top:2px;font-weight:500">Valor empresa / EBITDA</div></div>
+          <div style="background:#161d2b;border:1px solid #232c3e;border-left:4px solid #34d399;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8b94a6;font-weight:600">ROE</div><div style="font-size:22px;font-weight:800;color:#eef1f6;margin-top:3px">146,7%</div><div style="font-size:11px;color:#6b7488;margin-top:2px;font-weight:500">Retorno s/ patrimonio</div></div>
+          <div style="background:#161d2b;border:1px solid #232c3e;border-left:4px solid #34d399;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8b94a6;font-weight:600">Margen neto</div><div style="font-size:22px;font-weight:800;color:#eef1f6;margin-top:3px">25,0%</div><div style="font-size:11px;color:#6b7488;margin-top:2px;font-weight:500">Beneficio / Ingresos</div></div>
+          <div style="background:#161d2b;border:1px solid #232c3e;border-left:4px solid #fbbf24;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8b94a6;font-weight:600">Deuda / Patrim.</div><div style="font-size:22px;font-weight:800;color:#eef1f6;margin-top:3px">1,8×</div><div style="font-size:11px;color:#6b7488;margin-top:2px;font-weight:500">Apalancamiento</div></div>
+          <div style="background:#161d2b;border:1px solid #232c3e;border-left:4px solid #fbbf24;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8b94a6;font-weight:600">Crec. ingresos</div><div style="font-size:22px;font-weight:800;color:#eef1f6;margin-top:3px">6,0%</div><div style="font-size:11px;color:#6b7488;margin-top:2px;font-weight:500">Variación anual</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 2b · MIDNIGHT BLUE ========== -->
+  <div class="dv-opt" id="2b">
+    <div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Dark midnight · azul medianoche, acento celeste — más frío y "financiero"</div>
+    <div class="dv-card" style="width:900px;background:linear-gradient(160deg,#0c1428,#0a0f1e);border:1px solid #1d2a45;border-radius:22px;box-shadow:0 10px 40px rgba(0,0,0,.45);font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden">
+      <div style="padding:24px 32px 30px">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
+          <div style="display:inline-flex;background:#101a30;border:1px solid #213256;border-radius:999px;padding:3px">
+            <span style="padding:5px 10px;border-radius:999px;font-size:13px;color:#8294b5">☀</span>
+            <span style="padding:5px 10px;border-radius:999px;font-size:13px;background:#7aa2ff;color:#0a0f1e;font-weight:700">☾</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between">
+          <div style="display:flex;gap:16px;align-items:center">
+            <div style="width:52px;height:52px;border-radius:15px;background:linear-gradient(140deg,#7aa2ff,#4f7df0);display:flex;align-items:center;justify-content:center;color:#0a0f1e;font-weight:800;font-size:20px">A</div>
+            <div>
+              <div style="display:flex;align-items:center;gap:10px"><span style="font-size:24px;font-weight:800;color:#eaf0fb">AAPL</span><span style="font-size:12px;font-weight:600;color:#9cc0ff;background:rgba(122,162,255,.15);padding:4px 11px;border-radius:20px">Tecnología</span></div>
+              <div style="font-size:14px;color:#8294b5;margin-top:3px;font-weight:500">Apple Inc. · NASDAQ</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:30px;font-weight:800;color:#eaf0fb;letter-spacing:-.5px">US$ 289,23</div>
+            <div style="display:inline-flex;align-items:center;gap:6px;margin-top:5px;background:rgba(61,220,151,.14);color:#3ddc97;font-weight:700;font-size:13px;padding:5px 12px;border-radius:20px">▲ +US$ 1,78 · +0,62%</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-top:24px">
+          <div style="background:#0f1a30;border:1px solid #1d2a45;border-radius:18px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:13px;font-weight:600;color:#bccbe6">Últimos 30 días</span><span style="font-size:12px;color:#637098;font-weight:600">Cap. 4,17 B</span></div>
+            <svg viewBox="0 0 560 120" preserveAspectRatio="none" style="width:100%;height:110px;display:block">
+              <defs><linearGradient id="g2b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3ddc97" stop-opacity="0.22"/><stop offset="100%" stop-color="#3ddc97" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22 L560 120 L0 120 Z" fill="url(#g2b)"/>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22" fill="none" stroke="#3ddc97" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div style="background:#0f1a30;border:1px solid #1d2a45;border-radius:18px;padding:20px;display:flex;flex-direction:column">
+            <div style="font-size:12px;font-weight:600;color:#8294b5;margin-bottom:12px">Veredicto IA</div>
+            <div style="align-self:flex-start;background:rgba(61,220,151,.14);color:#3ddc97;font-weight:800;font-size:18px;padding:9px 18px;border-radius:14px">COMPRA</div>
+            <div style="font-size:12px;color:#8294b5;margin-top:16px;font-weight:500">Confianza 72%</div>
+            <div style="height:8px;background:#1a2942;border-radius:5px;margin-top:7px;overflow:hidden"><div style="width:72%;height:100%;background:#3ddc97;border-radius:5px"></div></div>
+            <div style="margin-top:auto;padding-top:16px;font-size:13px;color:#9cc0ff;font-weight:700">Ver análisis completo →</div>
+          </div>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#bccbe6;margin:24px 0 14px">Coeficientes y ratios</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          <div style="background:#0f1a30;border:1px solid #1d2a45;border-left:4px solid #f5b544;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8294b5;font-weight:600">P/E</div><div style="font-size:22px;font-weight:800;color:#eaf0fb;margin-top:3px">33,7×</div><div style="font-size:11px;color:#637098;margin-top:2px;font-weight:500">Precio / Ganancias</div></div>
+          <div style="background:#0f1a30;border:1px solid #1d2a45;border-left:4px solid #f5b544;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8294b5;font-weight:600">EV/EBITDA</div><div style="font-size:22px;font-weight:800;color:#eaf0fb;margin-top:3px">26,0×</div><div style="font-size:11px;color:#637098;margin-top:2px;font-weight:500">Valor empresa / EBITDA</div></div>
+          <div style="background:#0f1a30;border:1px solid #1d2a45;border-left:4px solid #3ddc97;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8294b5;font-weight:600">ROE</div><div style="font-size:22px;font-weight:800;color:#eaf0fb;margin-top:3px">146,7%</div><div style="font-size:11px;color:#637098;margin-top:2px;font-weight:500">Retorno s/ patrimonio</div></div>
+          <div style="background:#0f1a30;border:1px solid #1d2a45;border-left:4px solid #3ddc97;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8294b5;font-weight:600">Margen neto</div><div style="font-size:22px;font-weight:800;color:#eaf0fb;margin-top:3px">25,0%</div><div style="font-size:11px;color:#637098;margin-top:2px;font-weight:500">Beneficio / Ingresos</div></div>
+          <div style="background:#0f1a30;border:1px solid #1d2a45;border-left:4px solid #f5b544;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8294b5;font-weight:600">Deuda / Patrim.</div><div style="font-size:22px;font-weight:800;color:#eaf0fb;margin-top:3px">1,8×</div><div style="font-size:11px;color:#637098;margin-top:2px;font-weight:500">Apalancamiento</div></div>
+          <div style="background:#0f1a30;border:1px solid #1d2a45;border-left:4px solid #f5b544;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#8294b5;font-weight:600">Crec. ingresos</div><div style="font-size:22px;font-weight:800;color:#eaf0fb;margin-top:3px">6,0%</div><div style="font-size:11px;color:#637098;margin-top:2px;font-weight:500">Variación anual</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 2c · WARM CHARCOAL (OLED) ========== -->
+  <div class="dv-opt" id="2c">
+    <div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Dark charcoal · casi negro cálido (OLED), acento violeta — el más premium</div>
+    <div class="dv-card" style="width:900px;background:#0b0b0f;border:1px solid #26262f;border-radius:22px;box-shadow:0 10px 40px rgba(0,0,0,.5);font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden">
+      <div style="padding:24px 32px 30px">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
+          <div style="display:inline-flex;background:#16161c;border:1px solid #2c2c37;border-radius:999px;padding:3px">
+            <span style="padding:5px 10px;border-radius:999px;font-size:13px;color:#9690a0">☀</span>
+            <span style="padding:5px 10px;border-radius:999px;font-size:13px;background:#a78bfa;color:#0b0b0f;font-weight:700">☾</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between">
+          <div style="display:flex;gap:16px;align-items:center">
+            <div style="width:52px;height:52px;border-radius:15px;background:linear-gradient(140deg,#a78bfa,#7c5cf0);display:flex;align-items:center;justify-content:center;color:#0b0b0f;font-weight:800;font-size:20px">A</div>
+            <div>
+              <div style="display:flex;align-items:center;gap:10px"><span style="font-size:24px;font-weight:800;color:#f1f0f4">AAPL</span><span style="font-size:12px;font-weight:600;color:#c4b5fd;background:rgba(167,139,250,.15);padding:4px 11px;border-radius:20px">Tecnología</span></div>
+              <div style="font-size:14px;color:#9690a0;margin-top:3px;font-weight:500">Apple Inc. · NASDAQ</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:30px;font-weight:800;color:#f1f0f4;letter-spacing:-.5px">US$ 289,23</div>
+            <div style="display:inline-flex;align-items:center;gap:6px;margin-top:5px;background:rgba(74,222,128,.13);color:#4ade80;font-weight:700;font-size:13px;padding:5px 12px;border-radius:20px">▲ +US$ 1,78 · +0,62%</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-top:24px">
+          <div style="background:#141419;border:1px solid #26262f;border-radius:18px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:13px;font-weight:600;color:#cbc7d2">Últimos 30 días</span><span style="font-size:12px;color:#736d7e;font-weight:600">Cap. 4,17 B</span></div>
+            <svg viewBox="0 0 560 120" preserveAspectRatio="none" style="width:100%;height:110px;display:block">
+              <defs><linearGradient id="g2c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4ade80" stop-opacity="0.2"/><stop offset="100%" stop-color="#4ade80" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22 L560 120 L0 120 Z" fill="url(#g2c)"/>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div style="background:#141419;border:1px solid #26262f;border-radius:18px;padding:20px;display:flex;flex-direction:column">
+            <div style="font-size:12px;font-weight:600;color:#9690a0;margin-bottom:12px">Veredicto IA</div>
+            <div style="align-self:flex-start;background:rgba(74,222,128,.13);color:#4ade80;font-weight:800;font-size:18px;padding:9px 18px;border-radius:14px">COMPRA</div>
+            <div style="font-size:12px;color:#9690a0;margin-top:16px;font-weight:500">Confianza 72%</div>
+            <div style="height:8px;background:#26262f;border-radius:5px;margin-top:7px;overflow:hidden"><div style="width:72%;height:100%;background:#4ade80;border-radius:5px"></div></div>
+            <div style="margin-top:auto;padding-top:16px;font-size:13px;color:#c4b5fd;font-weight:700">Ver análisis completo →</div>
+          </div>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#cbc7d2;margin:24px 0 14px">Coeficientes y ratios</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          <div style="background:#141419;border:1px solid #26262f;border-left:4px solid #fbbf24;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#9690a0;font-weight:600">P/E</div><div style="font-size:22px;font-weight:800;color:#f1f0f4;margin-top:3px">33,7×</div><div style="font-size:11px;color:#736d7e;margin-top:2px;font-weight:500">Precio / Ganancias</div></div>
+          <div style="background:#141419;border:1px solid #26262f;border-left:4px solid #fbbf24;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#9690a0;font-weight:600">EV/EBITDA</div><div style="font-size:22px;font-weight:800;color:#f1f0f4;margin-top:3px">26,0×</div><div style="font-size:11px;color:#736d7e;margin-top:2px;font-weight:500">Valor empresa / EBITDA</div></div>
+          <div style="background:#141419;border:1px solid #26262f;border-left:4px solid #4ade80;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#9690a0;font-weight:600">ROE</div><div style="font-size:22px;font-weight:800;color:#f1f0f4;margin-top:3px">146,7%</div><div style="font-size:11px;color:#736d7e;margin-top:2px;font-weight:500">Retorno s/ patrimonio</div></div>
+          <div style="background:#141419;border:1px solid #26262f;border-left:4px solid #4ade80;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#9690a0;font-weight:600">Margen neto</div><div style="font-size:22px;font-weight:800;color:#f1f0f4;margin-top:3px">25,0%</div><div style="font-size:11px;color:#736d7e;margin-top:2px;font-weight:500">Beneficio / Ingresos</div></div>
+          <div style="background:#141419;border:1px solid #26262f;border-left:4px solid #fbbf24;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#9690a0;font-weight:600">Deuda / Patrim.</div><div style="font-size:22px;font-weight:800;color:#f1f0f4;margin-top:3px">1,8×</div><div style="font-size:11px;color:#736d7e;margin-top:2px;font-weight:500">Apalancamiento</div></div>
+          <div style="background:#141419;border:1px solid #26262f;border-left:4px solid #fbbf24;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#9690a0;font-weight:600">Crec. ingresos</div><div style="font-size:22px;font-weight:800;color:#f1f0f4;margin-top:3px">6,0%</div><div style="font-size:11px;color:#736d7e;margin-top:2px;font-weight:500">Variación anual</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<p class="dv-next">Probá: "aplicá <a class="dv-oid" href="#1a">1a</a> claro + <a class="dv-oid" href="#2a">2a</a> oscuro a toda la plataforma con el botón" · "<a class="dv-oid" href="#2c">2c</a> pero acento índigo en vez de violeta" · "otra variante dark"</p>
+</section>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Direcciones visuales · pantalla Detalle de acción (AAPL)</span></div>
+<div class="dv-opts">
+
+  <!-- ========== 1a · FINTECH CLARO ========== -->
+  <div class="dv-opt" id="1a">
+    <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Fintech claro y accesible · Plus Jakarta Sans · mucho aire, colores suaves</div>
+    <div class="dv-card" style="width:900px;background:#f6f7f9;border:1px solid #e8eaef;border-radius:22px;box-shadow:0 6px 30px rgba(15,23,41,.07);font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden">
+      <div style="padding:30px 32px">
+        <!-- header -->
+        <div style="display:flex;align-items:flex-start;justify-content:space-between">
+          <div style="display:flex;gap:16px;align-items:center">
+            <div style="width:52px;height:52px;border-radius:15px;background:linear-gradient(140deg,#6366f1,#4338ca);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px">A</div>
+            <div>
+              <div style="display:flex;align-items:center;gap:10px"><span style="font-size:24px;font-weight:800;color:#0f1729">AAPL</span><span style="font-size:12px;font-weight:600;color:#4338ca;background:#ecebfb;padding:4px 11px;border-radius:20px">Tecnología</span></div>
+              <div style="font-size:14px;color:#6b7280;margin-top:3px;font-weight:500">Apple Inc. · NASDAQ</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:30px;font-weight:800;color:#0f1729;letter-spacing:-.5px">US$ 289,23</div>
+            <div style="display:inline-flex;align-items:center;gap:6px;margin-top:5px;background:#e7f6ec;color:#16a34a;font-weight:700;font-size:13px;padding:5px 12px;border-radius:20px">▲ +US$ 1,78 · +0,62%</div>
+          </div>
+        </div>
+
+        <!-- chart + verdict -->
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-top:24px">
+          <div style="background:#fff;border:1px solid #eef0f4;border-radius:18px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font-size:13px;font-weight:600;color:#374151">Últimos 30 días</span><span style="font-size:12px;color:#9ca3af;font-weight:600">Cap. 4,17 B</span></div>
+            <svg viewBox="0 0 560 120" preserveAspectRatio="none" style="width:100%;height:110px;display:block">
+              <defs><linearGradient id="g1a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#16a34a" stop-opacity="0.22"/><stop offset="100%" stop-color="#16a34a" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22 L560 120 L0 120 Z" fill="url(#g1a)"/>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div style="background:#fff;border:1px solid #eef0f4;border-radius:18px;padding:20px;display:flex;flex-direction:column">
+            <div style="font-size:12px;font-weight:600;color:#6b7280;margin-bottom:12px">Veredicto IA</div>
+            <div style="align-self:flex-start;background:#e7f6ec;color:#16a34a;font-weight:800;font-size:18px;padding:9px 18px;border-radius:14px">COMPRA</div>
+            <div style="font-size:12px;color:#6b7280;margin-top:16px;font-weight:500">Confianza 72%</div>
+            <div style="height:8px;background:#eef0f4;border-radius:5px;margin-top:7px;overflow:hidden"><div style="width:72%;height:100%;background:#16a34a;border-radius:5px"></div></div>
+            <div style="margin-top:auto;padding-top:16px;font-size:13px;color:#4338ca;font-weight:700">Ver análisis completo →</div>
+          </div>
+        </div>
+
+        <!-- ratios -->
+        <div style="font-size:13px;font-weight:700;color:#374151;margin:24px 0 14px">Coeficientes y ratios</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          <div style="background:#fff;border:1px solid #eef0f4;border-left:4px solid #f59e0b;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#6b7280;font-weight:600">P/E</div><div style="font-size:22px;font-weight:800;color:#0f1729;margin-top:3px">33,7×</div><div style="font-size:11px;color:#9ca3af;margin-top:2px;font-weight:500">Precio / Ganancias</div></div>
+          <div style="background:#fff;border:1px solid #eef0f4;border-left:4px solid #f59e0b;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#6b7280;font-weight:600">EV/EBITDA</div><div style="font-size:22px;font-weight:800;color:#0f1729;margin-top:3px">26,0×</div><div style="font-size:11px;color:#9ca3af;margin-top:2px;font-weight:500">Valor empresa / EBITDA</div></div>
+          <div style="background:#fff;border:1px solid #eef0f4;border-left:4px solid #16a34a;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#6b7280;font-weight:600">ROE</div><div style="font-size:22px;font-weight:800;color:#0f1729;margin-top:3px">146,7%</div><div style="font-size:11px;color:#9ca3af;margin-top:2px;font-weight:500">Retorno s/ patrimonio</div></div>
+          <div style="background:#fff;border:1px solid #eef0f4;border-left:4px solid #16a34a;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#6b7280;font-weight:600">Margen neto</div><div style="font-size:22px;font-weight:800;color:#0f1729;margin-top:3px">25,0%</div><div style="font-size:11px;color:#9ca3af;margin-top:2px;font-weight:500">Beneficio / Ingresos</div></div>
+          <div style="background:#fff;border:1px solid #eef0f4;border-left:4px solid #f59e0b;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#6b7280;font-weight:600">Deuda / Patrim.</div><div style="font-size:22px;font-weight:800;color:#0f1729;margin-top:3px">1,8×</div><div style="font-size:11px;color:#9ca3af;margin-top:2px;font-weight:500">Apalancamiento</div></div>
+          <div style="background:#fff;border:1px solid #eef0f4;border-left:4px solid #f59e0b;border-radius:14px;padding:15px 17px"><div style="font-size:12px;color:#6b7280;font-weight:600">Crec. ingresos</div><div style="font-size:22px;font-weight:800;color:#0f1729;margin-top:3px">6,0%</div><div style="font-size:11px;color:#9ca3af;margin-top:2px;font-weight:500">Variación anual</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 1b · DARK PREMIUM ========== -->
+  <div class="dv-opt" id="1b">
+    <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Dark premium / trading pro · Space Grotesk + mono · negro profundo, acentos neón</div>
+    <div class="dv-card" style="width:900px;background:radial-gradient(120% 80% at 80% 0%,#0d1622 0%,#06080c 60%);border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.5);font-family:'Space Grotesk',sans-serif;overflow:hidden">
+      <div style="padding:30px 32px">
+        <!-- header -->
+        <div style="display:flex;align-items:flex-start;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="font-size:26px;font-weight:700;color:#f0f5fb;font-family:'JetBrains Mono',monospace;letter-spacing:1px">AAPL</span><span style="font-size:11px;font-weight:600;color:#00e08a;border:1px solid rgba(0,224,138,.4);background:rgba(0,224,138,.08);padding:4px 11px;border-radius:6px">TECNOLOGÍA</span></div>
+            <div style="font-size:13.5px;color:#7d8aa0;margin-top:6px">Apple Inc. · NASDAQ · Cap. 4,17 B</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:30px;font-weight:600;color:#f0f5fb;font-family:'JetBrains Mono',monospace;text-shadow:0 0 22px rgba(0,224,138,.25)">289,23</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#00e08a;margin-top:5px">+1,78 ▲ +0,62%</div>
+          </div>
+        </div>
+
+        <!-- chart + verdict -->
+        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-top:24px">
+          <div style="background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:18px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-size:12px;color:#8b97a6;letter-spacing:.5px">ÚLTIMOS 30 DÍAS</span><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5d6a7a">30D · 1D</span></div>
+            <svg viewBox="0 0 560 120" preserveAspectRatio="none" style="width:100%;height:112px;display:block">
+              <defs><linearGradient id="g1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00e08a" stop-opacity="0.3"/><stop offset="100%" stop-color="#00e08a" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22 L560 120 L0 120 Z" fill="url(#g1b)"/>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22" fill="none" stroke="#00e08a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" style="filter:drop-shadow(0 0 6px rgba(0,224,138,.5))"/>
+            </svg>
+          </div>
+          <div style="background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:18px;display:flex;flex-direction:column">
+            <div style="font-size:12px;color:#8b97a6;letter-spacing:.5px;margin-bottom:13px">VEREDICTO IA</div>
+            <div style="align-self:flex-start;background:rgba(0,224,138,.12);border:1px solid rgba(0,224,138,.45);color:#00e08a;font-weight:700;font-size:17px;padding:9px 18px;border-radius:10px;font-family:'JetBrains Mono',monospace;box-shadow:0 0 24px rgba(0,224,138,.18)">COMPRA</div>
+            <div style="font-size:11px;color:#7d8aa0;margin-top:15px;letter-spacing:.3px">CONFIANZA 72%</div>
+            <div style="height:6px;background:rgba(255,255,255,.08);border-radius:4px;margin-top:7px;overflow:hidden"><div style="width:72%;height:100%;background:linear-gradient(90deg,#00e08a,#22d3ee);border-radius:4px"></div></div>
+            <div style="margin-top:auto;padding-top:15px;font-size:12.5px;color:#22d3ee">Ver análisis completo →</div>
+          </div>
+        </div>
+
+        <!-- ratios -->
+        <div style="font-size:12px;color:#8b97a6;letter-spacing:.5px;margin:24px 0 13px">COEFICIENTES Y RATIOS</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px"><div style="font-size:11px;color:#7d8aa0;letter-spacing:.3px">P/E</div><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#e0a040;margin-top:4px">33,7×</div></div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px"><div style="font-size:11px;color:#7d8aa0;letter-spacing:.3px">EV/EBITDA</div><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#e0a040;margin-top:4px">26,0×</div></div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px"><div style="font-size:11px;color:#7d8aa0;letter-spacing:.3px">ROE</div><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#00e08a;margin-top:4px">146,7%</div></div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px"><div style="font-size:11px;color:#7d8aa0;letter-spacing:.3px">MARGEN NETO</div><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#00e08a;margin-top:4px">25,0%</div></div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px"><div style="font-size:11px;color:#7d8aa0;letter-spacing:.3px">DEUDA / PATRIM.</div><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#e0a040;margin-top:4px">1,8×</div></div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px"><div style="font-size:11px;color:#7d8aa0;letter-spacing:.3px">CREC. INGRESOS</div><div style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#e0a040;margin-top:4px">6,0%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 1c · EDITORIAL CLÁSICO ========== -->
+  <div class="dv-opt" id="1c">
+    <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Editorial / financiero clásico · Spectral serif · papel, aire de research</div>
+    <div class="dv-card" style="width:900px;background:#f4f1ea;border:1px solid #ddd6c6;border-radius:6px;box-shadow:0 6px 26px rgba(60,50,30,.1);font-family:'IBM Plex Sans',sans-serif;overflow:hidden">
+      <div style="padding:32px 36px">
+        <!-- header -->
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;border-bottom:2px solid #1f1d18;padding-bottom:18px">
+          <div>
+            <div style="font-size:11px;letter-spacing:1.5px;color:#99342a;font-weight:600;text-transform:uppercase;margin-bottom:4px">Tecnología · NASDAQ</div>
+            <div style="font-family:'Spectral',serif;font-size:34px;font-weight:700;color:#1f1d18;line-height:1">Apple Inc.</div>
+            <div style="font-family:'Spectral',serif;font-style:italic;font-size:15px;color:#6f685a;margin-top:4px">AAPL · capitalización 4,17 billones</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:'Spectral',serif;font-size:32px;font-weight:600;color:#1f1d18">US$ 289,23</div>
+            <div style="font-family:'Spectral',serif;font-size:15px;color:#2f6b46;margin-top:3px">▲ +1,78 (+0,62%)</div>
+          </div>
+        </div>
+
+        <!-- chart + verdict -->
+        <div style="display:grid;grid-template-columns:1.7fr 1fr;gap:26px;margin-top:22px">
+          <div>
+            <div style="font-size:11px;letter-spacing:1px;color:#6f685a;text-transform:uppercase;margin-bottom:10px;font-weight:600">Cotización · últimos 30 días</div>
+            <svg viewBox="0 0 560 120" preserveAspectRatio="none" style="width:100%;height:118px;display:block">
+              <defs><linearGradient id="g1c" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#99342a" stop-opacity="0.14"/><stop offset="100%" stop-color="#99342a" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22 L560 120 L0 120 Z" fill="url(#g1c)"/>
+              <path d="M0 88 L46 82 L93 90 L140 74 L186 80 L233 62 L280 70 L326 54 L373 60 L420 42 L466 50 L513 32 L560 22" fill="none" stroke="#1f1d18" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div style="border-left:1px solid #ddd6c6;padding-left:24px">
+            <div style="font-size:11px;letter-spacing:1px;color:#6f685a;text-transform:uppercase;font-weight:600;margin-bottom:10px">Dictamen del análisis</div>
+            <div style="font-family:'Spectral',serif;font-size:30px;font-weight:700;color:#2f6b46">Compra</div>
+            <div style="font-family:'Spectral',serif;font-style:italic;font-size:14px;color:#6f685a;margin-top:8px">Confianza estimada</div>
+            <div style="display:flex;align-items:baseline;gap:8px;margin-top:2px"><span style="font-family:'Spectral',serif;font-size:26px;font-weight:600;color:#1f1d18">72</span><span style="font-size:13px;color:#6f685a">/ 100</span></div>
+            <div style="height:3px;background:#e4ddcd;margin-top:10px"><div style="width:72%;height:100%;background:#2f6b46"></div></div>
+          </div>
+        </div>
+
+        <!-- ratios as ruled table -->
+        <div style="font-family:'Spectral',serif;font-size:18px;font-weight:600;color:#1f1d18;margin:26px 0 6px;border-bottom:1px solid #ddd6c6;padding-bottom:8px">Coeficientes y ratios</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 44px">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #e4ddcd"><span style="font-size:13.5px;color:#43403a">Precio / Ganancias (P/E)</span><span style="font-family:'Spectral',serif;font-size:18px;font-weight:600;color:#1f1d18">33,7×</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #e4ddcd"><span style="font-size:13.5px;color:#43403a">Valor empresa / EBITDA</span><span style="font-family:'Spectral',serif;font-size:18px;font-weight:600;color:#1f1d18">26,0×</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #e4ddcd"><span style="font-size:13.5px;color:#43403a">Retorno s/ patrimonio</span><span style="font-family:'Spectral',serif;font-size:18px;font-weight:600;color:#2f6b46">146,7%</span></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #e4ddcd"><span style="font-size:13.5px;color:#43403a">Margen neto</span><span style="font-family:'Spectral',serif;font-size:18px;font-weight:600;color:#2f6b46">25,0%</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #e4ddcd"><span style="font-size:13.5px;color:#43403a">Deuda / Patrimonio</span><span style="font-family:'Spectral',serif;font-size:18px;font-weight:600;color:#1f1d18">1,8×</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #e4ddcd"><span style="font-size:13.5px;color:#43403a">Crecimiento de ingresos</span><span style="font-family:'Spectral',serif;font-size:18px;font-weight:600;color:#1f1d18">6,0%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<p class="dv-next">Probá: "aplicá <a class="dv-oid" href="#1a">1a</a> a toda la plataforma" · "<a class="dv-oid" href="#1b">1b</a> pero con acento cian" · "mostrame el Dashboard en <a class="dv-oid" href="#1c">1c</a>" · "otra dirección más"</p>
+</section>
+</x-dc>
+</body>
+</html>
