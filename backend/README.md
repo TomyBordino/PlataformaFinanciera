@@ -10,6 +10,11 @@ uvicorn main:app --reload
 
 Swagger: http://localhost:8000/api/docs
 
+> El `Dockerfile` de esta carpeta usa como contexto de build la **raíz del repo**
+> (así lo arma `render.yaml`), por eso sus `COPY` apuntan a `backend/...`. Para
+> buildearlo a mano hay que correr `docker build -f backend/Dockerfile .` parado
+> en la raíz del repo, no dentro de `backend/`.
+
 ## Deploy en Render (plan free)
 
 Este repo incluye `render.yaml` en la raíz (formato "Blueprint" de Render).
