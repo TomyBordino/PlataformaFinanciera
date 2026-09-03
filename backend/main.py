@@ -22,6 +22,7 @@ SECRET = os.getenv("SECRET", "dev-secret")
 DB_PATH = os.getenv("DB_PATH", "finterm.db")
 ANTHROPIC_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-opus-5")
+AI_ACCESS_CODE = os.getenv("AI_ACCESS_CODE", "")
 AI_RATE_LIMIT = int(os.getenv("AI_RATE_LIMIT_PER_HOUR", "30"))
 ai_client = anthropic.AsyncAnthropic(api_key=ANTHROPIC_KEY) if ANTHROPIC_KEY else None
 
@@ -180,9 +181,10 @@ async def macro(fn: str):
                         f"https://www.alphavantage.co/query?function={fn}{extra}&apikey={ALPHA}", 86400)
 
 # ---------------------------- IA (proxy hacia la API de Claude) ----------------------------
-# La plataforma no tiene login, así que este endpoint queda abierto a cualquiera que
-# lo llame; para no exponer la cuenta de Anthropic a un consumo descontrolado se aplica
-# un límite simple de pedidos por IP y por hora (en memoria, alcanza para este uso).
+# La plataforma no tiene login. En vez de eso, este endpoint pide un código de acceso
+# fijo (AI_ACCESS_CODE) que solo conoce el dueño del sitio — si no está configurado,
+# queda abierto. Además, un límite simple de pedidos por IP y por hora (en memoria)
+# actúa como segunda barrera por si el código se filtra.
 
 _ai_rate: dict[str, list[float]] = {}
 
@@ -190,9 +192,12 @@ class AICompleteRequest(BaseModel):
     prompt: str
 
 @app.post("/api/ai/complete")
-async def ai_complete(body: AICompleteRequest, request: Request):
+async def ai_complete(body: AICompleteRequest, request: Request,
+                       x_ai_code: str = Header(None, alias="X-AI-Code")):
     if not ai_client:
         raise HTTPException(503, "IA no configurada en el servidor (falta la env var ANTHROPIC_API_KEY).")
+    if AI_ACCESS_CODE and x_ai_code != AI_ACCESS_CODE:
+        raise HTTPException(401, "código de acceso inválido")
     if len(body.prompt) > 30000:
         raise HTTPException(400, "el prompt es demasiado largo")
     ip = request.client.host if request.client else "unknown"

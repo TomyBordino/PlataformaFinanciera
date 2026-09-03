@@ -2368,12 +2368,26 @@ class Component extends DCLogic {
   // Fuera de ahí (este sitio publicado) se usa el backend como proxy hacia la API de Claude
   // (la key vive oculta en el servidor, ver backend/main.py → /api/ai/complete).
   AI_BACKEND_URL='https://plataformafinanciera.onrender.com';
+  AI_CODEKEY='finterm-ai-code';
+  // Código de acceso para generar análisis (no es una cuenta: es un secreto único que
+  // solo conoce el dueño del sitio, para que el proxy de IA del backend no quede abierto
+  // a cualquiera). Se pide una sola vez por navegador y se guarda en localStorage.
+  getAiCode(){
+    let c=null; try{ c=localStorage.getItem(this.AI_CODEKEY); }catch(e){}
+    if(!c){
+      try{ c=window.prompt('Código de acceso para generar análisis con IA:')||''; }catch(e){ c=''; }
+      if(c){ try{ localStorage.setItem(this.AI_CODEKEY, c); }catch(e){} }
+    }
+    return c;
+  }
   async aiComplete(prompt){
     if(typeof window!=='undefined' && window.claude && window.claude.complete){
       return window.claude.complete(prompt);
     }
+    const code=this.getAiCode();
     const r=await fetch(this.AI_BACKEND_URL+'/api/ai/complete',{
-      method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({prompt})});
+      method:'POST', headers:{'Content-Type':'application/json', 'X-AI-Code':code||''}, body:JSON.stringify({prompt})});
+    if(r.status===401){ try{ localStorage.removeItem(this.AI_CODEKEY); }catch(e){} throw new Error('Código de acceso incorrecto.'); }
     if(!r.ok){ let msg='IA no disponible ahora mismo.'; try{ const j=await r.json(); msg=j.detail||msg; }catch(e){} throw new Error(msg); }
     const j=await r.json();
     return j.text;
