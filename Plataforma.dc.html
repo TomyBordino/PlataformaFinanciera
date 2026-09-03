@@ -3448,25 +3448,12 @@ class Component extends DCLogic {
   tvSymbol(t){ if(this.state.market==='merval') return 'BCBA:'+t;
     if(this.state.market==='brasil' && this.isB3(t)) return 'BMFBOVESPA:'+t;
     return t; }
-  // Widget de TradingView (versión script tv.js, permite indicadores CON parámetros):
-  // SMA 50 + EMA 200 (blanca, por default), RSI y Pivot Points (soportes/resistencias automáticos).
-  // Nota: el override de color de un estudio va en "studies_overrides" (a nivel del widget, no
-  // dentro de cada estudio) y se aplica por NOMBRE de estudio — por eso la de 200 es Exponencial
-  // (no Simple, como la de 50): si fueran el mismo estudio, el override pintaría a ambas por igual.
-  tvSrc(t){ const cfg=JSON.stringify({ autosize:true, symbol:this.tvSymbol(t), interval:'D', timezone:'exchange',
-      theme:(this.state.theme==='dark'?'dark':'light'), style:'1', locale:'es', allow_symbol_change:false, withdateranges:true,
-      hide_side_toolbar:false, // barra de dibujo: líneas de tendencia, fibo, etc.
-      studies:[ {id:'MASimple@tv-basicstudies',inputs:{length:50}},
-        {id:'MAExp@tv-basicstudies',inputs:{length:200}},
-        {id:'RSI@tv-basicstudies',inputs:{length:14}}, {id:'PivotPointsHighLow@tv-basicstudies',inputs:{}},
-        {id:'LinearRegression@tv-basicstudies',inputs:{}} ],
-      studies_overrides:{ 'moving average exponential.plot.color':'#FFFFFF' },
-      container_id:'tv' });
-    const S='scr'+'ipt';
-    const doc='<!DOCTYPE html><html><body style="margin:0"><div id="tv" style="height:100vh"></div>'+
-      '<'+S+' src="https://s3.tradingview.com/tv.js"></'+S+'>'+
-      '<'+S+'>new TradingView.widget('+cfg+')</'+S+'></body></html>';
-    return 'data:text/html;charset=utf-8,'+encodeURIComponent(doc); }
+  // Widget de TradingView: se sirve como archivo real (tv-widget.html, en la raíz del repo),
+  // no como data: URL — así tiene un origen estable y TradingView puede guardar en localStorage
+  // los cambios que hagas a mano en el gráfico (color, indicadores) entre visitas. Ver ese archivo
+  // para la config completa (estudios, colores default, auto_save_delay).
+  tvSrc(t){ const p=new URLSearchParams({symbol:this.tvSymbol(t), theme:(this.state.theme==='dark'?'dark':'light')});
+    return '/tv-widget.html?'+p.toString(); }
 
   // Gráfico avanzado de Detalle: rangos, grilla, eje de precios, SMA50 y crosshair.
   // Componente React con estado propio para que hover/rango sobrevivan a los re-renders.
