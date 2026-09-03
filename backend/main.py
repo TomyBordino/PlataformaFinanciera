@@ -181,23 +181,25 @@ async def macro(fn: str):
                         f"https://www.alphavantage.co/query?function={fn}{extra}&apikey={ALPHA}", 86400)
 
 # ---------------------------- IA (proxy hacia la API de Claude) ----------------------------
-# La plataforma no tiene login. En vez de eso, este endpoint pide un código de acceso
+# La plataforma no tiene login. En vez de eso, generar IA (/api/ai/complete) y publicar
+# análisis compartidos (POST /api/analysis, más abajo) piden el mismo código de acceso
 # fijo (AI_ACCESS_CODE) que solo conoce el dueño del sitio — si no está configurado,
-# queda abierto. Además, un límite simple de pedidos por IP y por hora (en memoria)
+# quedan abiertos. Además, un límite simple de pedidos por IP y por hora (en memoria)
 # actúa como segunda barrera por si el código se filtra.
 
 _ai_rate: dict[str, list[float]] = {}
+
+def require_ai_code(x_ai_code: str = Header(None, alias="X-AI-Code")):
+    if AI_ACCESS_CODE and x_ai_code != AI_ACCESS_CODE:
+        raise HTTPException(401, "código de acceso inválido")
 
 class AICompleteRequest(BaseModel):
     prompt: str
 
 @app.post("/api/ai/complete")
-async def ai_complete(body: AICompleteRequest, request: Request,
-                       x_ai_code: str = Header(None, alias="X-AI-Code")):
+async def ai_complete(body: AICompleteRequest, request: Request, _=Depends(require_ai_code)):
     if not ai_client:
         raise HTTPException(503, "IA no configurada en el servidor (falta la env var ANTHROPIC_API_KEY).")
-    if AI_ACCESS_CODE and x_ai_code != AI_ACCESS_CODE:
-        raise HTTPException(401, "código de acceso inválido")
     if len(body.prompt) > 30000:
         raise HTTPException(400, "el prompt es demasiado largo")
     ip = request.client.host if request.client else "unknown"
@@ -263,7 +265,7 @@ def get_analysis(market: str, ticker: str):
     return {"body": json.loads(row["body"]), "created": row["created"]}
 
 @app.post("/api/analysis")
-def put_analysis(a: Analysis, user_id: int = Depends(admin_only)):
+def put_analysis(a: Analysis, _=Depends(require_ai_code)):
     with db() as con:
         con.execute("INSERT OR REPLACE INTO analyses VALUES (?,?,?,?)",
                     (a.market, a.ticker.upper(), json.dumps(a.body), time.time()))

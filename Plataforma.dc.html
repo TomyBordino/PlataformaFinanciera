@@ -2453,12 +2453,12 @@ class Component extends DCLogic {
     if((m=u.match(/alphavantage\.co\/query\?function=(FEDERAL_FUNDS_RATE|CPI|TREASURY_YIELD|UNEMPLOYMENT)/))) return '/api/macro/'+m[1];
     return u; }
   gf(u,o){ return fetch(this.apiURL(u),o); }
-  // Análisis IA compartidos: al entrar a una empresa sin análisis local, se busca el guardado por otros usuarios.
+  // Análisis IA compartidos: al entrar a una empresa sin análisis local, se busca el guardado por otros
+  // usuarios en el backend (Render) — independiente de _backend, que solo gobierna el login/las cuentas.
   async ensureSharedAnalysis(key){
-    if(!this._backend) return;
     this._shTry=this._shTry||{}; if(this._shTry[key]) return; this._shTry[key]=1;
     try{ const [mkt,t,hz]=key.split(':');
-      const r=await fetch('/api/analysis/'+mkt+'/'+encodeURIComponent(t+(hz?'~'+hz:''))); if(!r.ok) return;
+      const r=await fetch(this.AI_BACKEND_URL+'/api/analysis/'+mkt+'/'+encodeURIComponent(t+(hz?'~'+hz:''))); if(!r.ok) return;
       const j=await r.json();
       if(j&&j.body&&!this.state.aiCache[key]){ const cache={...this.state.aiCache}; cache[key]=j.body; this.setState({aiCache:cache}); }
     }catch(e){}
@@ -3208,10 +3208,11 @@ class Component extends DCLogic {
           this.setState({aiTrack:log.slice(-400)}); } }catch(e){}
       const cache={...this.state.aiCache}; cache[key]=j;
       this.setState({aiCache:cache, aiLoading:false}, ()=>this.persistNow());
-      // con backend: publicar el análisis para que quede disponible a todos los usuarios
-      if(this._backend){ try{ const [mkt,tk,hz]=key.split(':');
-        fetch('/api/analysis',{method:'POST',headers:{'Content-Type':'application/json',...this.authHeaders()},body:JSON.stringify({market:mkt,ticker:tk+(hz?'~'+hz:''),body:j})}).catch(()=>{});
-      }catch(e){} }
+      // publicar el análisis en el backend (Render) para que quede disponible a todos los visitantes,
+      // no solo en este navegador — protegido por el mismo código de acceso que la generación IA.
+      try{ const [mkt,tk,hz]=key.split(':');
+        fetch(this.AI_BACKEND_URL+'/api/analysis',{method:'POST',headers:{'Content-Type':'application/json','X-AI-Code':this.getAiCode()||''},body:JSON.stringify({market:mkt,ticker:tk+(hz?'~'+hz:''),body:j})}).catch(()=>{});
+      }catch(e){}
     }catch(e){ this.setState({aiLoading:false, aiErr:(e&&e.message)||'no se pudo generar el análisis'}); }
   }
 
@@ -3524,7 +3525,7 @@ class Component extends DCLogic {
             R.createElement('div',{style:{fontFamily:'IBM Plex Mono,monospace',fontSize:'13px',fontWeight:600,color:'var(--tx)'}},fmt(arr[hov])),
             R.createElement('div',{style:{fontFamily:'IBM Plex Mono,monospace',fontSize:'10.5px',color:dp>=0?'var(--up)':'var(--down)'}},(dp>=0?'+':'')+dp.toFixed(2)+'% en el rango'),
             sma[hov]!=null? R.createElement('div',{style:{fontSize:'10px',color:'var(--gold-dim, #c4923a)',marginTop:'2px'}},'SMA 50: '+fmt(sma[hov])):null,
-            sma2[hov]!=null? R.createElement('div',{style:{fontSize:'10px',color:'#7c88b8',marginTop:'1px'}},'SMA 200: '+fmt(sma2[hov])):null);
+            sma2[hov]!=null? R.createElement('div',{style:{fontSize:'10px',color:'#ffffff',marginTop:'1px'}},'SMA 200: '+fmt(sma2[hov])):null);
         }
         return R.createElement('div',null,
           R.createElement('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'10px',gap:'12px',flexWrap:'wrap'}},
@@ -3533,7 +3534,7 @@ class Component extends DCLogic {
               smaLine?R.createElement('span',{style:{fontSize:'10.5px',color:'var(--tx3)',display:'inline-flex',alignItems:'center',gap:'6px'}},
                 R.createElement('span',{style:{width:'16px',height:'0',borderTop:'2px dashed #c4923a',display:'inline-block'}}),'SMA 50'):null,
               smaLine2?R.createElement('span',{style:{fontSize:'10.5px',color:'var(--tx3)',display:'inline-flex',alignItems:'center',gap:'6px'}},
-                R.createElement('span',{style:{width:'16px',height:'0',borderTop:'2px dashed #7c88b8',display:'inline-block'}}),'SMA 200'):null,
+                R.createElement('span',{style:{width:'16px',height:'0',borderTop:'2px dashed #ffffff',display:'inline-block'}}),'SMA 200'):null,
               R.createElement('span',{style:{fontFamily:'IBM Plex Mono,monospace',fontSize:'12.5px',fontWeight:600,color:pctR>=0?'var(--up)':'var(--down)'}},(pctR>=0?'+':'')+pctR.toFixed(2)+'% · '+rk))),
           R.createElement('div',{style:{position:'relative'}},
             R.createElement('svg',{viewBox:'0 0 '+w+' '+h,preserveAspectRatio:'none',onMouseMove:onMove,onMouseLeave:()=>setHov(null),style:{width:'100%',height:'240px',display:'block',cursor:'crosshair'}},
@@ -3542,7 +3543,7 @@ class Component extends DCLogic {
                 R.createElement('stop',{offset:'100%',stopColor:col,stopOpacity:0}))),
               grid.map((g,i)=>R.createElement('line',{key:'g'+i,x1:0,y1:g.y,x2:iw,y2:g.y,stroke:'var(--bd)',strokeWidth:1})),
               R.createElement('path',{d:area,fill:'url(#'+gid+')'}),
-              smaLine2?R.createElement('path',{d:smaLine2,fill:'none',stroke:'#7c88b8',strokeWidth:1.6,strokeDasharray:'2 4',opacity:0.9}):null,
+              smaLine2?R.createElement('path',{d:smaLine2,fill:'none',stroke:'#ffffff',strokeWidth:1.6,strokeDasharray:'2 4',opacity:0.9}):null,
               smaLine?R.createElement('path',{d:smaLine,fill:'none',stroke:'#c4923a',strokeWidth:1.6,strokeDasharray:'6 5',opacity:0.9}):null,
               R.createElement('path',{d:line,fill:'none',stroke:col,strokeWidth:2,strokeLinejoin:'round'}),
               hovEls),
