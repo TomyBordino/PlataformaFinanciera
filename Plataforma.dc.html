@@ -3453,7 +3453,8 @@ class Component extends DCLogic {
   tvSrc(t){ const cfg=JSON.stringify({ autosize:true, symbol:this.tvSymbol(t), interval:'D', timezone:'exchange',
       theme:(this.state.theme==='dark'?'dark':'light'), style:'1', locale:'es', allow_symbol_change:false, withdateranges:true,
       hide_side_toolbar:false, // barra de dibujo: líneas de tendencia, fibo, etc.
-      studies:[ {id:'MASimple@tv-basicstudies',inputs:{length:50}}, {id:'MASimple@tv-basicstudies',inputs:{length:200}},
+      studies:[ {id:'MASimple@tv-basicstudies',inputs:{length:50}},
+        {id:'MASimple@tv-basicstudies',inputs:{length:200},overrides:{'Plot.color':'#FFFFFF'}},
         {id:'RSI@tv-basicstudies',inputs:{length:14}}, {id:'PivotPointsHighLow@tv-basicstudies',inputs:{}},
         {id:'LinearRegression@tv-basicstudies',inputs:{}} ], container_id:'tv' });
     const S='scr'+'ipt';
