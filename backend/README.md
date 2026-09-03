@@ -27,3 +27,23 @@ Este repo incluye `render.yaml` en la raíz (formato "Blueprint" de Render).
 > **Nota**: el plan free no tiene disco persistente, así que `finterm.db` (usuarios, caché, análisis) se reinicia en cada redeploy o cuando el servicio duerme por inactividad. Para persistencia real, pasar a un plan pago y agregar un disco montado en `DB_PATH`.
 
 > Este backend queda **desconectado del sitio publicado en Netlify** a propósito: el frontend solo lo detecta si vive en el mismo dominio (`fetch('/api/openapi.json')` relativo). Conectarlos es un paso aparte y deliberado — no ocurre solo por desplegar esto.
+
+## Análisis IA (`/api/ai/complete`) y control de gasto
+
+Este endpoint llama a la API de Claude (Anthropic) con la key del servidor. Como
+la plataforma no tiene login, el acceso está protegido por `AI_ACCESS_CODE`
+(un código que solo conocés vos, ver `.env.example`) y un rate-limit por IP
+(`AI_RATE_LIMIT_PER_HOUR`) — pero igual **es uso pago, no gratuito**.
+
+Para que nunca te sorprenda un gasto:
+
+1. Por default usa `claude-haiku-4-5`, el modelo más barato de Claude
+   ($1 / $5 por millón de tokens de entrada/salida) — alcanza bien para este
+   tipo de resumen. Se puede cambiar con la env var `ANTHROPIC_MODEL`.
+2. Poné un **tope de gasto duro** en la cuenta de Anthropic:
+   [console.anthropic.com](https://console.anthropic.com) → **Settings → Billing → Usage limits**
+   → configurá un límite mensual (ej. u$s 2-5). Una vez alcanzado, la API
+   deja de responder (nuevos pedidos fallan) hasta el mes siguiente o hasta
+   que subas el límite a mano — nunca te cobra de más.
+3. `AI_ACCESS_CODE` + `AI_RATE_LIMIT_PER_HOUR` acotan cuánta gente puede
+   gastar de ese presupuesto sin que lo sepas.

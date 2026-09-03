@@ -19,7 +19,7 @@ services:
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: ANTHROPIC_MODEL
-        value: claude-opus-5
+        value: claude-haiku-4-5
       - key: AI_ACCESS_CODE
         sync: false
       - key: AI_RATE_LIMIT_PER_HOUR

@@ -21,7 +21,7 @@ ALPHA = os.getenv("ALPHAVANTAGE_KEY", "")
 SECRET = os.getenv("SECRET", "dev-secret")
 DB_PATH = os.getenv("DB_PATH", "finterm.db")
 ANTHROPIC_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-opus-5")
+ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-haiku-4-5")
 AI_ACCESS_CODE = os.getenv("AI_ACCESS_CODE", "")
 AI_RATE_LIMIT = int(os.getenv("AI_RATE_LIMIT_PER_HOUR", "30"))
 ai_client = anthropic.AsyncAnthropic(api_key=ANTHROPIC_KEY) if ANTHROPIC_KEY else None
@@ -211,7 +211,6 @@ async def ai_complete(body: AICompleteRequest, request: Request,
         resp = await ai_client.messages.create(
             model=ANTHROPIC_MODEL,
             max_tokens=4096,
-            output_config={"effort": "medium"},
             messages=[{"role": "user", "content": body.prompt}],
         )
     except anthropic.RateLimitError:
