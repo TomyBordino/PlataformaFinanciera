@@ -16,5 +16,11 @@ services:
         generateValue: true
       - key: ADMIN_EMAIL
         sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-opus-5
+      - key: AI_RATE_LIMIT_PER_HOUR
+        value: 30
       - key: DB_PATH
         value: finterm.db

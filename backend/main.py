@@ -7,9 +7,10 @@
 import hashlib, hmac, json, os, secrets, sqlite3, time
 from contextlib import contextmanager
 
+import anthropic
 import httpx
 from dotenv import load_dotenv
-from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -19,6 +20,10 @@ FINNHUB = os.getenv("FINNHUB_KEY", "")
 ALPHA = os.getenv("ALPHAVANTAGE_KEY", "")
 SECRET = os.getenv("SECRET", "dev-secret")
 DB_PATH = os.getenv("DB_PATH", "finterm.db")
+ANTHROPIC_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-opus-5")
+AI_RATE_LIMIT = int(os.getenv("AI_RATE_LIMIT_PER_HOUR", "30"))
+ai_client = anthropic.AsyncAnthropic(api_key=ANTHROPIC_KEY) if ANTHROPIC_KEY else None
 
 app = FastAPI(title="FINTERM API", docs_url="/api/docs", openapi_url="/api/openapi.json")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -173,6 +178,45 @@ async def macro(fn: str):
     extra = "&interval=daily&maturity=10year" if fn == "TREASURY_YIELD" else ""
     return await cached(f"macro:{fn}",
                         f"https://www.alphavantage.co/query?function={fn}{extra}&apikey={ALPHA}", 86400)
+
+# ---------------------------- IA (proxy hacia la API de Claude) ----------------------------
+# La plataforma no tiene login, así que este endpoint queda abierto a cualquiera que
+# lo llame; para no exponer la cuenta de Anthropic a un consumo descontrolado se aplica
+# un límite simple de pedidos por IP y por hora (en memoria, alcanza para este uso).
+
+_ai_rate: dict[str, list[float]] = {}
+
+class AICompleteRequest(BaseModel):
+    prompt: str
+
+@app.post("/api/ai/complete")
+async def ai_complete(body: AICompleteRequest, request: Request):
+    if not ai_client:
+        raise HTTPException(503, "IA no configurada en el servidor (falta la env var ANTHROPIC_API_KEY).")
+    if len(body.prompt) > 30000:
+        raise HTTPException(400, "el prompt es demasiado largo")
+    ip = request.client.host if request.client else "unknown"
+    now = time.time()
+    window = [t for t in _ai_rate.get(ip, []) if now - t < 3600]
+    if len(window) >= AI_RATE_LIMIT:
+        raise HTTPException(429, "límite de análisis IA alcanzado, probá de nuevo más tarde")
+    window.append(now)
+    _ai_rate[ip] = window
+    try:
+        resp = await ai_client.messages.create(
+            model=ANTHROPIC_MODEL,
+            max_tokens=4096,
+            output_config={"effort": "medium"},
+            messages=[{"role": "user", "content": body.prompt}],
+        )
+    except anthropic.RateLimitError:
+        raise HTTPException(429, "la API de IA está saturada, probá de nuevo en unos segundos")
+    except anthropic.APIStatusError as e:
+        raise HTTPException(502, f"error de la API de IA: {e.message}")
+    except anthropic.APIConnectionError:
+        raise HTTPException(502, "no se pudo conectar con la API de IA")
+    text = "".join(b.text for b in resp.content if b.type == "text")
+    return {"text": text}
 
 # ---------------------------- autenticación ----------------------------
 # Se define antes de los endpoints que dependen de admin_only (ej. análisis IA).

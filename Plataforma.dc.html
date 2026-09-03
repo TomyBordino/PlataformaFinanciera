@@ -1716,9 +1716,8 @@ class Component extends DCLogic {
     this.setState({newsSumm:{...this.state.newsSumm,[k]:{loading:true}}});
     let text;
     try{
-      if(!(typeof window!=='undefined' && window.claude && window.claude.complete)) throw new Error('no ia');
       const prompt='Sos un analista financiero y economista senior, gestor de un fondo de cobertura, que le explica a un inversor minorista. Traducí al español (si está en otro idioma) y resumí de forma simple pero detallada (3 a 5 frases) la siguiente noticia. Contá qué pasó y por qué puede importarle a un inversor. Respondé SOLO con el resumen, sin títulos, sin markdown.\nTitular: '+h.headline+'\nExtracto: '+(h.summary||'(sin extracto; resumí en base al titular)')+'\nFuente: '+(h.source||'');
-      let out=null; for(let i=0;i<2 && out==null;i++){ try{ out=await window.claude.complete(prompt); }catch(e){ await new Promise(r=>setTimeout(r,800)); } }
+      let out=null; for(let i=0;i<2 && out==null;i++){ try{ out=await this.aiComplete(prompt); }catch(e){ await new Promise(r=>setTimeout(r,800)); } }
       if(out==null) throw new Error('timeout');
       text=String(out).trim();
     }catch(e){ text='No se pudo generar el resumen ahora. Volvé a intentarlo, o abrí la fuente original con el enlace.'; }
@@ -1889,7 +1888,6 @@ class Component extends DCLogic {
   // Resumen diario IA: párrafo del día sobre el mercado + cartera/watchlist. Solo admin genera; se cachea por fecha.
   briefKey(){ return 'brief:'+this.state.market+':'+new Date().toISOString().slice(0,10); }
   async genDailyBrief(){ if(!this.isAdmin()||this.state.briefBusy) return;
-    if(!(typeof window!=='undefined'&&window.claude&&window.claude.complete)){ this.setState({briefErr:'IA no disponible en este entorno (abrí la versión publicada).'}); return; }
     this.setState({briefBusy:true, briefErr:null});
     try{
       const idx=this.state.idx[this.state.market]; const mkName=this.mk().name;
@@ -1906,7 +1904,7 @@ class Component extends DCLogic {
         (pf.length?('Cartera del usuario: '+pf.join(', ')+'. '):'')+(wl.length?('En seguimiento: '+wl.join(', ')+'. '):'')+
         (macroTxt?('Titulares macro: '+macroTxt+'. '):'')+
         'Mencioná lo más relevante para su cartera/seguimiento si corresponde. No des consejo de inversión personalizado; cerrá con una frase de contexto. Devolvé solo el texto, sin encabezados.';
-      let out=null; for(let i=0;i<2&&out==null;i++){ try{ out=await window.claude.complete(prompt); }catch(e){ await new Promise(r=>setTimeout(r,800)); } }
+      let out=null; for(let i=0;i<2&&out==null;i++){ try{ out=await this.aiComplete(prompt); }catch(e){ await new Promise(r=>setTimeout(r,800)); } }
       if(out==null) throw new Error('timeout');
       const brief={ text:String(out).trim(), ts:Date.now() };
       const store={...(this.state.briefs||{})}; store[this.briefKey()]=brief;
@@ -2335,7 +2333,7 @@ class Component extends DCLogic {
     const now=Date.now(); if(this._descTry[t] && now-this._descTry[t]<30000) return;
     this._descTry[t]=now;
     try{
-      const r=await window.claude.complete('En 2 o 3 frases simples en español, explicá a qué se dedica la empresa '+name+' ('+t+'): cuál es su negocio principal, qué vende y cómo gana dinero. Sin jerga. Respondé SOLO con el texto, sin títulos ni markdown.');
+      const r=await this.aiComplete('En 2 o 3 frases simples en español, explicá a qué se dedica la empresa '+name+' ('+t+'): cuál es su negocio principal, qué vende y cómo gana dinero. Sin jerga. Respondé SOLO con el texto, sin títulos ni markdown.');
       if(r) { this._desc[t]=String(r).trim(); this._descDB[t]={v:this._desc[t], ts:Date.now()}; this.persistSoon(); this.setState({descTick:(this.state.descTick||0)+1}); }
     }catch(e){}
   }
@@ -2365,6 +2363,20 @@ class Component extends DCLogic {
   // aunque haya un backend desplegado en paralelo (ver backend/README.md).
   async detectBackend(){
     this._backend=false;
+  }
+  // ---- IA: window.claude.complete solo existe dentro del entorno de Claude (canvas/preview).
+  // Fuera de ahí (este sitio publicado) se usa el backend como proxy hacia la API de Claude
+  // (la key vive oculta en el servidor, ver backend/main.py → /api/ai/complete).
+  AI_BACKEND_URL='https://plataformafinanciera.onrender.com';
+  async aiComplete(prompt){
+    if(typeof window!=='undefined' && window.claude && window.claude.complete){
+      return window.claude.complete(prompt);
+    }
+    const r=await fetch(this.AI_BACKEND_URL+'/api/ai/complete',{
+      method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({prompt})});
+    if(!r.ok){ let msg='IA no disponible ahora mismo.'; try{ const j=await r.json(); msg=j.detail||msg; }catch(e){} throw new Error(msg); }
+    const j=await r.json();
+    return j.text;
   }
   // ── Autenticación (solo con backend desplegado; sin backend la plataforma corre en modo local sin login) ──
   AUTHKEY='finterm-auth';
@@ -3127,14 +3139,13 @@ class Component extends DCLogic {
       '"senales":["<2-3 riesgos a vigilar>"]'+
       '}';
     try{
-      if(!(typeof window!=='undefined' && window.claude && window.claude.complete)) throw new Error('IA no disponible en este entorno (abrí la versión publicada).');
       // Dos completions chicas en paralelo; cada una reintenta hasta 3 veces
       // (la última vez sin titulares, para respuesta más rápida). Si el bloque B falla,
       // se muestra igual el veredicto (A) sin los textos complementarios.
       const shrink=(p)=>p.replace(macroNewsLine,'').replace(localNewsLine,'').replace(newsLine,'Considerá el flujo de noticias como neutro (no disponible).');
       const ask=async(p)=>{ let out=null;
         for(let i=0;i<3 && out==null;i++){
-          try{ out=await window.claude.complete(i<2? p : shrink(p)); }
+          try{ out=await this.aiComplete(i<2? p : shrink(p)); }
           catch(e){ this._lastAiErr=e; await new Promise(r=>setTimeout(r,800)); }
         } return out; };
       const [txtA,txtB]=await Promise.all([ask(promptA), ask(promptB)]);
