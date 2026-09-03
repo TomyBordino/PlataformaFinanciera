@@ -10,12 +10,12 @@
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script>
   // Se sirve como archivo real (no data: URL) a propósito: así el navegador tiene un
-  // origen estable y TradingView puede guardar la configuración del gráfico (colores,
-  // indicadores que agregues a mano) en localStorage entre visitas, vía auto_save_delay.
+  // origen estable y TradingView puede guardar en localStorage lo que cambies a mano
+  // en el gráfico entre visitas (vía auto_save_delay).
   var p = new URLSearchParams(location.search);
   var symbol = p.get('symbol') || 'AAPL';
   var theme = p.get('theme') === 'light' ? 'light' : 'dark';
-  new TradingView.widget({
+  var tvWidget = new TradingView.widget({
     autosize: true,
     symbol: symbol,
     interval: 'D',
@@ -33,11 +33,18 @@
       {id: 'PivotPointsHighLow@tv-basicstudies', inputs: {}},
       {id: 'LinearRegression@tv-basicstudies', inputs: {}}
     ],
-    studies_overrides: {
-      'moving average exponential.plot.color': '#FFFFFF'
-    },
     auto_save_delay: 5,
     container_id: 'tv'
+  });
+  // "studies_overrides" en el constructor es un bug conocido del widget gratuito de
+  // TradingView: no lo aplica. El color por default hay que setearlo con la API del
+  // widget una vez que el gráfico terminó de cargar.
+  tvWidget.onChartReady(function () {
+    try {
+      tvWidget.applyStudiesOverrides({
+        'moving average exponential.plot.color': '#FFFFFF'
+      });
+    } catch (e) {}
   });
 </script>
 </body>
