@@ -2361,9 +2361,10 @@ class Component extends DCLogic {
   // ---- Backend opcional (FastAPI, ver carpeta backend/): si está desplegado junto al frontend,
   // todas las llamadas externas se enrutan por /api/... (keys ocultas + caché compartida).
   // Si no hay backend (ej. GitHub Pages o archivo local), se usan las APIs públicas directo.
+  // Login desactivado a propósito: la plataforma corre siempre en modo local sin cuentas,
+  // aunque haya un backend desplegado en paralelo (ver backend/README.md).
   async detectBackend(){
-    try{ const r=await fetch('/api/openapi.json',{cache:'no-store'}); this._backend=r.ok; }
-    catch(e){ this._backend=false; }
+    this._backend=false;
   }
   // ── Autenticación (solo con backend desplegado; sin backend la plataforma corre en modo local sin login) ──
   AUTHKEY='finterm-auth';
