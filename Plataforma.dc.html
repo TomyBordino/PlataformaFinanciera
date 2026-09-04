@@ -2075,15 +2075,18 @@ class Component extends DCLogic {
     try{
       const K=this.FINNHUB_KEY;
       const wantFreq=(this.state.repFreq==='a')?'annual':'quarterly';
-      let j=await this.gf('https://finnhub.io/api/v1/stock/financials-reported?symbol='+sym+'&freq='+wantFreq+'&from=2022-06-24&to=2026-09-01&token='+K).then(r=>r.json());
+      // "to" siempre hasta hoy (calculado, no hardcodeado): si no, la ventana queda vencida
+      // con el tiempo y "Actualizar" nunca puede traer balances nuevos.
+      const toDate=new Date().toISOString().slice(0,10);
+      let j=await this.gf('https://finnhub.io/api/v1/stock/financials-reported?symbol='+sym+'&freq='+wantFreq+'&from=2022-06-24&to='+toDate+'&token='+K).then(r=>r.json());
       let items=(j&&j.data)||[], mode=(wantFreq==='annual')?'a':'q';
       if(mode==='q' && items.filter(x=>x&&x.quarter>0).length<2){
         // la empresa reporta solo una vez al año (típico de emisores extranjeros, 20-F)
-        j=await this.gf('https://finnhub.io/api/v1/stock/financials-reported?symbol='+sym+'&freq=annual&from=2016-01-01&to=2026-09-01&token='+K).then(r=>r.json());
+        j=await this.gf('https://finnhub.io/api/v1/stock/financials-reported?symbol='+sym+'&freq=annual&from=2016-01-01&to='+toDate+'&token='+K).then(r=>r.json());
         items=(j&&j.data)||[]; mode='a';
       } else if(mode==='q'){
         // el feed trimestral trae solo 10-Q (Q1/Q2/Q3); se suma el anual (10-K) para poder derivar el Q4.
-        try{ const ja=await this.gf('https://finnhub.io/api/v1/stock/financials-reported?symbol='+sym+'&freq=annual&from=2016-01-01&to=2026-09-01&token='+K).then(r=>r.json());
+        try{ const ja=await this.gf('https://finnhub.io/api/v1/stock/financials-reported?symbol='+sym+'&freq=annual&from=2016-01-01&to='+toDate+'&token='+K).then(r=>r.json());
           const ann=(ja&&ja.data)||[]; const seen=new Set(items.map(x=>x&&x.endDate));
           for(const a of ann){ if(a&&a.endDate&&!seen.has(a.endDate)) items.push(a); }
         }catch(e){}
